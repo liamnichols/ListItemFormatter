@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53F36121222E656500D93A5D"
+               BlueprintIdentifier = "534C99D9223590F600B951D4"
                BuildableName = "ListItemFormatter.framework"
-               BlueprintName = "ListItemFormatter iOS"
+               BlueprintName = "ListItemFormatter macOS"
                ReferencedContainer = "container:ListItemFormatter.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -26,26 +26,15 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
-      onlyGenerateCoverageForSpecifiedTargets = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <CodeCoverageTargets>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53F36121222E656500D93A5D"
-            BuildableName = "ListItemFormatter.framework"
-            BlueprintName = "ListItemFormatter iOS"
-            ReferencedContainer = "container:ListItemFormatter.xcodeproj">
-         </BuildableReference>
-      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53F3612A222E656500D93A5D"
-               BuildableName = "ListItemFormatterTests iOS.xctest"
-               BlueprintName = "ListItemFormatterTests iOS"
+               BlueprintIdentifier = "534C99E1223590F600B951D4"
+               BuildableName = "ListItemFormatterTests macOS.xctest"
+               BlueprintName = "ListItemFormatterTests macOS"
                ReferencedContainer = "container:ListItemFormatter.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -53,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53F36121222E656500D93A5D"
+            BlueprintIdentifier = "534C99D9223590F600B951D4"
             BuildableName = "ListItemFormatter.framework"
-            BlueprintName = "ListItemFormatter iOS"
+            BlueprintName = "ListItemFormatter macOS"
             ReferencedContainer = "container:ListItemFormatter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -75,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53F36121222E656500D93A5D"
+            BlueprintIdentifier = "534C99D9223590F600B951D4"
             BuildableName = "ListItemFormatter.framework"
-            BlueprintName = "ListItemFormatter iOS"
+            BlueprintName = "ListItemFormatter macOS"
             ReferencedContainer = "container:ListItemFormatter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -93,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53F36121222E656500D93A5D"
+            BlueprintIdentifier = "534C99D9223590F600B951D4"
             BuildableName = "ListItemFormatter.framework"
-            BlueprintName = "ListItemFormatter iOS"
+            BlueprintName = "ListItemFormatter macOS"
             ReferencedContainer = "container:ListItemFormatter.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
