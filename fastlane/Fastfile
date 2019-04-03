@@ -1,0 +1,29 @@
+
+lane :update_version do |options|
+
+  version_number = options[:version] ||= UI.input "Please provide the version number:"
+  tag = "v#{version_number}"
+
+  UI.user_error! "Version #{version_number} already exists" if git_tag_exists(tag: tag)
+
+  ensure_git_status_clean
+  ensure_git_branch(branch: 'master')
+
+  UI.message "Incrementing build number"
+  Dir.chdir("..") do
+    sh("agvtool", "next-version")
+  end
+
+  UI.message "Setting version number: #{version_number}"
+  Dir.chdir("..") do
+    sh("agvtool", "new-marketing-version", version_number)
+  end
+
+  UI.message "Updating Podspec"
+  version_bump_podspec(path: "ListItemFormatter.podspec", version_number: version_number)
+
+  git_commit(path: ".", message: "Update version to '#{version_number}'")
+  add_git_tag(tag: tag)
+
+  push_to_git_remote if UI.confirm "Push changes to remote?"
+end
