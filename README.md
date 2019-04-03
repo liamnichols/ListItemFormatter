@@ -1,14 +1,16 @@
 #  ListItemFormatter
 
-`ListItemFormatter` is an `NSFormatter` subclass that supports formatting list items to the [Unicode CLDR specification](https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns). 
+[![Build Status](https://travis-ci.org/liamnichols/ListItemFormatter.svg?branch=master)](https://travis-ci.org/liamnichols/ListItemFormatter)
+
+`ListItemFormatter` is an `NSFormatter` subclass that supports formatting list items to the [Unicode CLDR specification](https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns).
 
 ## Usage
 
 ### Basic Formatting
 
 ```swift
-let formatter = ListItemFormatter() 
-formatter.string(from: ["Liam", "Jack", "John"]) // "Liam, Jack and John" 
+let formatter = ListItemFormatter()
+formatter.string(from: ["Liam", "Jack", "John"]) // "Liam, Jack and John"
 ```
 
 ### Modes & Styles
@@ -16,7 +18,7 @@ formatter.string(from: ["Liam", "Jack", "John"]) // "Liam, Jack and John"
 A `style` and `mode` property allow formatting for different types of data (such as units) as well as differnet length variations
 
 ```swift
-let formatter = ListItemFormatter() 
+let formatter = ListItemFormatter()
 formatter.mode = .standard
 formatter.string(from: ["Liam", "Jack", "John"]) // "Liam, Jack and John"
 
@@ -34,13 +36,13 @@ formatter.string(from: ["5 feet", "6 inch"]) // "5 feet, 6 inch"
 
 ### Localisation
 
-The formatter is backed by an export of the Unicode CLDR data (version 34) and just like any other standard `NSFormatter`  you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.   
+The formatter is backed by an export of the Unicode CLDR data (version 34) and just like any other standard `NSFormatter`  you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.
 
 ```swift
 let formatter = ListItemFormatter()
 formatter.locale = Locale(identifier: "ar_LB")
-formatter.string(from: ["ليام", "ليندا", "كوكباد"]) 
-// "ليام، ليندا، وكوكباد" 
+formatter.string(from: ["ليام", "ليندا", "كوكباد"])
+// "ليام، ليندا، وكوكباد"
 ```
 
 Here is the complete list of supported language, region, and script code variants:
