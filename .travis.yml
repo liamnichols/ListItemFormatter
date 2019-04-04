@@ -1,7 +1,4 @@
 osx_image: xcode10.1
 language: swift
 script:
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project ListItemFormatter.xcodeproj -scheme "ListItemFormatter iOS" -sdk iphonesimulator12.1 ONLY_ACTIVE_ARCH=NO | xcpretty
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project ListItemFormatter.xcodeproj -scheme "ListItemFormatter macOS" -sdk macosx10.14 ONLY_ACTIVE_ARCH=NO | xcpretty
-  - set -o pipefail && xcodebuild test -enableCodeCoverage YES -project ListItemFormatter.xcodeproj -scheme "ListItemFormatter tvOS" -sdk appletvsimulator12.1 ONLY_ACTIVE_ARCH=NO | xcpretty
-  - pod lib lint
+  - bundle exec fastlane test

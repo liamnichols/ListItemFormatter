@@ -27,3 +27,19 @@ lane :update_version do |options|
 
   push_to_git_remote if UI.confirm "Push changes to remote?"
 end
+
+lane :test do
+
+  clear_derived_data
+
+  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone XS (12.1)", clean: true)
+  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone X (11.4)")
+  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone 7 (10.3.1)")
+  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone 6s (9.3)")
+
+  run_tests(scheme: "ListItemFormatter tvOS", device: "Apple TV (12.1)", clean: true)
+
+  run_tests(scheme: "ListItemFormatter macOS", destination: "platform=macOS", clean: true)
+
+  pod_lib_lint
+end
