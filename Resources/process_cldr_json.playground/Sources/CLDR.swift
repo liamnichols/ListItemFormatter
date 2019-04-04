@@ -72,6 +72,8 @@ public class CLDR {
         let localeDataObjects = requiredListPatterns.map { localeData(for: $0.key, using: $0.value) }
 
         let encoder = PropertyListEncoder()
+        encoder.outputFormat = .xml
+
         let fileManager = FileManager.default
         try fileManager.createDirectory(at: outputDirectory, withIntermediateDirectories: true, attributes: nil)
 
