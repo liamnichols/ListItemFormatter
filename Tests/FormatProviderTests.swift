@@ -67,3 +67,40 @@ class FormatProviderTests: XCTestCase {
         XCTAssertNil(format)
     }
 }
+
+class FormatProviderPatternTests: XCTestCase {
+
+    func testAllPatternsInBundle() throws {
+
+        let bundle = Bundle(for: ListItemFormatter.self)
+
+        let localeInformation = try LocaleInformation(bundle: bundle)
+        let provider = FormatProvider(bundle: bundle)
+
+        XCTAssertFalse(localeInformation.localeIdentifiers.isEmpty)
+
+        let combinations: [(ListItemFormatter.Mode, ListItemFormatter.Style)] = [
+            (.standard, .default),
+            (.standard, .short),
+            (.standard, .narrow),
+            (.or, .default),
+            (.or, .short),
+            (.or, .narrow),
+            (.unit, .default),
+            (.unit, .short),
+            (.unit, .narrow),
+        ]
+
+        for identifier in localeInformation.localeIdentifiers {
+            for (mode, style) in combinations {
+
+                let locale = Locale(identifier: identifier)
+                let format = provider.format(for: locale)
+                let patterns = format?.getPatterns(for: style, mode: mode)
+
+                XCTAssertNotNil(format)
+                XCTAssertNotNil(patterns)
+            }
+        }
+    }
+}
