@@ -24,22 +24,60 @@ lane :update_version do |options|
   git_commit(path: ".", message: "Update version to '#{version_number}'")
   add_git_tag(tag: tag)
 
-  push_to_git_remote if UI.confirm "Push changes to remote?"
-  create_release(version_number: version_number) if UI.confirm "Would you like to create the release for #{version_number}?"
+  if UI.confirm "Push changes to remote?"
+    push_to_git_remote
+    create_release(tag: tag) if UI.confirm "Would you like to create the release for #{tag}?"
+  end
 end
 
 lane :create_release do |options|
 
-  version_number = options[:version_number] ||= UI.input "Please provide the version number:"
-  tag = "v#{version_number}"
+  tag = options[:tag] ||= UI.input "Please specify the tag to release:"
   name = options[:name] ||= "Please provide a name for this release:"
 
   carthage(command: "build", platform: "all", no_skip_current: true)
   carthage(command: "archive", output: "ListItemFormatter.framework.zip")
 
-  set_github_release(repository_name: "liamnichols/ListItemFormatter", name: name, tag_name: tag, upload_assets: ["ListItemFormatter.framework.zip"])
+  set_github_release(
+    repository_name: "liamnichols/ListItemFormatter",
+    name: name,
+    tag_name: tag,
+    description: get_changelog,
+    upload_assets: ["ListItemFormatter.framework.zip"]
+  )
 
   pod_push(use_bundle_exec: true)
+end
+
+lane :get_changelog do
+
+  Dir.chdir("..") do
+    sh("git", "fetch", "--all")
+  end
+
+  latest_release = github_api(
+    path: "/repos/liamnichols/ListItemFormatter/releases/latest",
+    error_handlers: {
+      404 => proc do
+        UI.message "Latest release does not exist, changelog will be entire commit history"
+      end
+    }
+  )
+
+  git_log = ""
+  pretty = "- %s by %an"
+  if latest_release[:status] == 200
+    last_tag = latest_release[:json]["tag_name"]
+    git_log = changelog_from_git_commits(pretty: pretty, between: [last_tag, "HEAD"])
+  else
+    git_log = changelog_from_git_commits(pretty: pretty, commits_count: 1000)
+  end
+
+  commits = git_log.split("\n").select { |c| c[/\(#[0-9]*\)/] }
+  changelog = commits.join("\n\n")
+
+  UI.important "CHANGELOG: \n\n#{changelog}"
+  changelog
 end
 
 lane :test do
