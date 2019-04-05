@@ -119,7 +119,6 @@
 		53F36130222E656500D93A5D /* ListItemFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemFormatterTests.swift; sourceTree = "<group>"; };
 		53F36132222E656500D93A5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		53F3613C222E657100D93A5D /* ListItemFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemFormatter.swift; sourceTree = "<group>"; };
-		53F3613E223089F100D93A5D /* Resources */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Resources; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,7 +211,6 @@
 			children = (
 				534C99C92234940900B951D4 /* README.md */,
 				534C99CE2235898F00B951D4 /* LICENSE.txt */,
-				53F3613E223089F100D93A5D /* Resources */,
 				53F36124222E656500D93A5D /* Source */,
 				53F3612F222E656500D93A5D /* Tests */,
 				53F36123222E656500D93A5D /* Products */,

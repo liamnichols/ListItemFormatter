@@ -1,110 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>listPatterns</key>
-	<dict>
-		<key>or</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴᏱᎩ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴᏱᎩ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>orNarrow</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴᏱᎩ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴᏱᎩ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>orShort</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴᏱᎩ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴᏱᎩ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>standard</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>standardNarrow</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>standardShort</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ ᎠᎴ %2$@</string>
-			<key>end</key>
-			<string>%1$@, ᎠᎴ %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>unit</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@, %2$@</string>
-			<key>end</key>
-			<string>%1$@, %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-		<key>unitNarrow</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@ %2$@</string>
-			<key>end</key>
-			<string>%1$@ %2$@</string>
-			<key>middle</key>
-			<string>%1$@ %2$@</string>
-			<key>start</key>
-			<string>%1$@ %2$@</string>
-		</dict>
-		<key>unitShort</key>
-		<dict>
-			<key>2</key>
-			<string>%1$@, %2$@</string>
-			<key>end</key>
-			<string>%1$@, %2$@</string>
-			<key>middle</key>
-			<string>%1$@, %2$@</string>
-			<key>start</key>
-			<string>%1$@, %2$@</string>
-		</dict>
-	</dict>
-	<key>localeIdentifier</key>
-	<string>chr</string>
-</dict>
+  <dict>
+    <key>localeIdentifier</key>
+    <string>chr</string>
+    <key>listPatterns</key>
+    <dict>
+      <key>standard</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴ %2$@</string>
+      </dict>
+      <key>or</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴᏱᎩ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴᏱᎩ %2$@</string>
+      </dict>
+      <key>orNarrow</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴᏱᎩ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴᏱᎩ %2$@</string>
+      </dict>
+      <key>orShort</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴᏱᎩ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴᏱᎩ %2$@</string>
+      </dict>
+      <key>standardNarrow</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴ %2$@</string>
+      </dict>
+      <key>standardShort</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, ᎠᎴ %2$@</string>
+        <key>2</key>
+        <string>%1$@ ᎠᎴ %2$@</string>
+      </dict>
+      <key>unit</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, %2$@</string>
+        <key>2</key>
+        <string>%1$@, %2$@</string>
+      </dict>
+      <key>unitNarrow</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@ %2$@</string>
+        <key>middle</key>
+        <string>%1$@ %2$@</string>
+        <key>end</key>
+        <string>%1$@ %2$@</string>
+        <key>2</key>
+        <string>%1$@ %2$@</string>
+      </dict>
+      <key>unitShort</key>
+      <dict>
+        <key>start</key>
+        <string>%1$@, %2$@</string>
+        <key>middle</key>
+        <string>%1$@, %2$@</string>
+        <key>end</key>
+        <string>%1$@, %2$@</string>
+        <key>2</key>
+        <string>%1$@, %2$@</string>
+      </dict>
+    </dict>
+  </dict>
 </plist>

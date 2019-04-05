@@ -1,4 +1,3 @@
-
 lane :update_version do |options|
 
   version_number = options[:version] ||= UI.input "Please provide the version number:"
@@ -42,4 +41,18 @@ lane :test do
   run_tests(scheme: "ListItemFormatter macOS", destination: "platform=macOS", clean: true)
 
   pod_lib_lint
+end
+
+lane :import_data do |options|
+
+  cldr_tag = options[:cldr_tag] ||= UI.input "Please specify the tag representing the CLDR data to import (https://github.com/unicode-cldr/cldr-json/tags):"
+
+  UI.important "Importing CLDR data. Using tag #{cldr_tag}"
+  next unless UI.confirm "Performing this task will overwrite the Source/Resources.xcassets directory. Are you sure you would like to continue?"
+
+  import "import_cldr_data.rb"
+  import_cldr_data(cldr_tag, "../Source/Resources.xcassets")
+
+  UI.success "Complete!"
+  run_tests(scheme: "ListItemFormatter macOS", destination: "platform=macOS", clean: true) if UI.confirm "Would you like to run macOS tests?"
 end
