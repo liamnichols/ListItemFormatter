@@ -36,7 +36,7 @@ formatter.string(from: ["5 feet", "6 inch"]) // "5 feet, 6 inch"
 
 ### Localisation
 
-The formatter is backed by an export of the Unicode CLDR data (version 34) and just like any other standard `NSFormatter`  you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.
+The formatter is backed by an export of the Unicode CLDR data (version 35) and just like any other standard `NSFormatter` you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.
 
 ```swift
 let formatter = ListItemFormatter()

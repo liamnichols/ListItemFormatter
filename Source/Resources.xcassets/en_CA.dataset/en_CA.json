@@ -1,5 +1,5 @@
 {
-  "localeIdentifier": "en",
+  "localeIdentifier": "en_CA",
   "listPatterns": {
     "standard": {
       "start": "%1$@, %2$@",
@@ -28,14 +28,14 @@
     "standardNarrow": {
       "start": "%1$@, %2$@",
       "middle": "%1$@, %2$@",
-      "end": "%1$@, %2$@",
-      "2": "%1$@, %2$@"
+      "end": "%1$@, and %2$@",
+      "2": "%1$@ and %2$@"
     },
     "standardShort": {
       "start": "%1$@, %2$@",
       "middle": "%1$@, %2$@",
-      "end": "%1$@, & %2$@",
-      "2": "%1$@ & %2$@"
+      "end": "%1$@, and %2$@",
+      "2": "%1$@ and %2$@"
     },
     "unit": {
       "start": "%1$@, %2$@",
