@@ -104,7 +104,7 @@ import Foundation
     ///
     /// - Returns: A string representation of `list` formatted using the receiver’s
     ///  current settings.
-    @objc public func string(from list: [String]) -> String {
+    @objc(stringFromList:) public func string(from list: [String]) -> String {
         return string(for: list) ?? ""
     }
 
@@ -124,7 +124,7 @@ import Foundation
     ///
     /// - Returns: An attributed string representation of `list` formatted using the
     ///  receiver’s current settings.
-    @objc public func attributedString(from list: [String]) -> NSAttributedString {
+    @objc(attributedStringFromList:) public func attributedString(from list: [String]) -> NSAttributedString {
 
         return attributedString(for: list, withDefaultAttributes: defaultAttributes) ?? NSAttributedString()
     }

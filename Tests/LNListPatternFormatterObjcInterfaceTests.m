@@ -36,8 +36,13 @@
     formatter.style = LNListItemFormatterStyleDefault;
     formatter.mode = LNListItemFormatterModeOr;
 
-    NSString *result = [formatter stringFrom:[NSArray arrayWithObjects:@"one", @"two", nil]];
+    NSArray *items = [NSArray arrayWithObjects:@"one", @"two", nil];
+
+    NSString *result = [formatter stringFromList:items];
     XCTAssertTrue([result isEqualToString:@"one or two"]);
+
+    NSAttributedString *attributedResult = [formatter attributedStringFromList:items];
+    XCTAssertTrue([attributedResult.string isEqualToString:@"one or two"]);
 }
 
 @end
