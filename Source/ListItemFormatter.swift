@@ -24,52 +24,110 @@ import Foundation
 
 /// ListItemFormatter can be used to format variable-length lists of things in a
 ///  locale-sensitive manner, such as "Monday, Tuesday, Friday, and Saturday" (in
-///  English) versus "lundi, mardi, vendredi et samedi" (in French)
+///  English) versus "lundi, mardi, vendredi et samedi" (in French).
 @objc(LNListItemFormatter) public class ListItemFormatter: Formatter, NSSecureCoding {
 
-    /// TBC
+    /// The following constants specify predefined format modes for list items.
+    ///
+    /// The mode is used in conjuction with the `Style` to pick the most appropriate
+    ///  set of patterns used by the formatter. You can read more about the patterns
+    ///  in the [Unicode documentation](http://unicode.org/reports/tr35/tr35-general.html#ListPatterns).
     @objc(LNListItemFormatterMode) public enum Mode: Int {
-        case standard, or, unit
+
+        /// Mode for a typical 'and' list of arbitrary placeholders.
+        case standard
+
+        /// Mode for a typical 'or' list of arbitrary placeholders.
+        case or
+
+        /// A format mode suitable for arbitrary placeholder units with no mode (i.e
+        ///  measurement units).
+        case unit
     }
 
-    /// TBC
+    /// The style is used in conjuction with the `Mode` to pick the most appropriate
+    ///  set of patterns used by the formatter. You can read more about the patterns
+    ///  in the [Unicode documentation](http://unicode.org/reports/tr35/tr35-general.html#ListPatterns).
     @objc(LNListItemFormatterStyle) public enum Style: Int {
-        case `default`, narrow, short
+
+        /// A style suitable for regular values and wide units.
+        case `default`
+
+        /// A shorter style typically suitable for short or abbreviated placeholder
+        ///  values.
+        case short
+
+        /// The narrowest style where space on the screen is very limited. This style
+        ///  will only have an effect when used with the `.unit` mode.
+        case narrow
     }
 
-    /// TBC
+    /// The format mode of the receiver.
+    ///
+    /// The default value is set to `.standard`.
     @objc public var mode: Mode
 
-    /// TBC
+    /// The format style of the reciever.
+    ///
+    /// The default value is set to `.default`.
     @objc public var style: Style
 
-    /// TBC
+    /// The locale for the receiver.
+    ///
+    /// The default value is set to `Locale.autoupdatingCurrent`.
     @objc public var locale: Locale
 
-    /// TBC
+    /// The default text attributes used to display the output string.
+    ///
+    /// The value of this property is used by the receiver to produce the output
+    ///  `NSAttributedString` object of `ListItemFormatter.attributedString(from:)`.
+    ///
+    /// The default value is an empty dictionary.
     @objc public var defaultAttributes: [NSAttributedString.Key: Any] = [:]
 
-    /// TBC
+    /// The item specific attributes used to display the list items within the output
+    ///  string.
+    ///
+    /// The value of this property is used by the receiver to produce the output
+    ///  `NSAttributedString` object of `ListItemFormatter.attributedString(from:)`,
+    ///  specifically by applying these attributes only to the items within the `list`
+    ///  array. These attributes are applied on top of `defaultAttributes`.
+    ///
+    /// The default value of this property is an empty dictionary.
     @objc public var itemAttributes: [NSAttributedString.Key: Any] = [:]
 
-    /// TBC
+    /// Returns a string representation of the given list items formatted using the
+    /// receiver’s current settings.
     ///
-    /// - Parameter list: TBC
-    /// - Returns: TBC
+    /// - Parameter list: The list items to be formatted into a localised, human
+    ///  readable list.
+    ///
+    /// - Returns: A string representation of `list` formatted using the receiver’s
+    ///  current settings.
     @objc public func string(from list: [String]) -> String? {
         return string(for: list)
     }
 
-    /// TBC
+    /// Returns an attributed strign representation of the given list items formatted
+    ///  using the receiver's current settings.
     ///
-    /// - Parameter list: TBC
-    /// - Returns: TBC
+    /// The receiver uses the values set in its `defaultAttributes` and
+    ///  `itemAttributes` properties by first applying the default attributes to the
+    ///  entire string and then adding `itemAttributes` to the range of each item
+    ///  within `list`. This means that attributes in the default attributes will
+    ///  first be applied to the `list` item ranges and then will be overwritten with
+    ///  values from the item specific attributes if they conflict. This means that
+    ///  you do not need to set the same attributes twice.
+    ///
+    /// - Parameter list: The list items to be formatted into an attributed,
+    ///  localised, human readable list.
+    ///
+    /// - Returns: An attributed string representation of `list` formatted using the
+    ///  receiver’s current settings.
     @objc public func attributedString(from list: [String]) -> NSAttributedString? {
 
         return attributedString(for: list, withDefaultAttributes: defaultAttributes)
     }
-
-    private let formatProvider = FormatProvider()
 
     public override init() {
         mode = .standard
@@ -77,6 +135,10 @@ import Foundation
         locale = .autoupdatingCurrent
         super.init()
     }
+
+    // MARK: - Private
+
+    private let formatProvider = FormatProvider()
 
     // MARK: - NSSecureCoding
 
