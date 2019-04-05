@@ -123,7 +123,7 @@ class ListItemFormatterTests: XCTestCase {
 
             formatter.locale = Locale(identifier: identifier)
 
-            let output = formatter.string(from: ["ONE", "TWO", "THREE"]) ?? ""
+            let output = formatter.string(from: ["ONE", "TWO", "THREE"])
             XCTAssertTrue(output.contains("ONE"))
             XCTAssertTrue(output.contains("TWO"))
             XCTAssertTrue(output.contains("THREE"))
@@ -200,17 +200,30 @@ class ListItemFormatterTests: XCTestCase {
 
         let output = formatter.attributedString(from: ["one", "two"])
         XCTAssertNotNil(output)
-        XCTAssertEqual(output?.string, "one and two")
+        XCTAssertEqual(output.string, "one and two")
 
         var range = NSRange(location: NSNotFound, length: 0)
 
-        XCTAssertEqual(output?.attribute(.identifier, at: 0, effectiveRange: &range) as? String, "ITEM")
+        XCTAssertEqual(output.attribute(.identifier, at: 0, effectiveRange: &range) as? String, "ITEM")
         XCTAssertEqual(range, NSRange(location: 0, length: 3))
 
-        XCTAssertEqual(output?.attribute(.identifier, at: 3, effectiveRange: &range) as? String, "DEFAULT")
+        XCTAssertEqual(output.attribute(.identifier, at: 3, effectiveRange: &range) as? String, "DEFAULT")
         XCTAssertEqual(range, NSRange(location: 3, length: 5))
 
-        XCTAssertEqual(output?.attribute(.identifier, at: 8, effectiveRange: &range) as? String, "ITEM")
+        XCTAssertEqual(output.attribute(.identifier, at: 8, effectiveRange: &range) as? String, "ITEM")
         XCTAssertEqual(range, NSRange(location: 8, length: 3))
+    }
+
+    func testFallbackValues() {
+
+        let bundle = Bundle(for: ListItemFormatterTests.self)
+        let provider = FormatProvider(bundle: bundle)
+        let formatter = ListItemFormatter(formatProvider: provider)
+
+        let string = formatter.string(from: ["ONE", "TWO", "THREE"])
+        let attributedString = formatter.attributedString(from: ["ONE", "TWO", "THREE"])
+
+        XCTAssertEqual(string, "")
+        XCTAssertEqual(attributedString, NSAttributedString())
     }
 }
