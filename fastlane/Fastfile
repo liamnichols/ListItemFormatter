@@ -98,7 +98,7 @@ lane :update_docs do |options|
 
   Dir.chdir("..") do
     yml = File.read(".jazzy.yml")
-    yml = yml.gsub(%r{:\s\d+\.\d+(\.\d+)?}i, ": #{version_number}")
+    yml = yml.gsub(%r{\d+\.\d+(\.\d+)?}, "#{version_number}")
     File.open(".jazzy.yml", "w") { |file| file.puts yml }
   end
 
