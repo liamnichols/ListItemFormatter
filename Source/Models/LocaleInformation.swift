@@ -35,7 +35,7 @@ struct LocaleInformation: Decodable {
     init(bundle: Bundle) throws {
 
         let asset = try NSDataAsset.loadDataAsset(named: "localeInformation", in: bundle)
-        self = try PropertyListDecoder().decode(LocaleInformation.self, from: asset.data)
+        self = try JSONDecoder().decode(LocaleInformation.self, from: asset.data)
     }
 
     init(localeIdentifiers: [String] = [], parentLocale: [String: String] = [:]) {

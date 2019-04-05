@@ -1,0 +1,59 @@
+{
+  "localeIdentifier": "eu",
+  "listPatterns": {
+    "standard": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    },
+    "or": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ edo %2$@",
+      "2": "%1$@ edo %2$@"
+    },
+    "orNarrow": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ edo %2$@",
+      "2": "%1$@ edo %2$@"
+    },
+    "orShort": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ edo %2$@",
+      "2": "%1$@ edo %2$@"
+    },
+    "standardNarrow": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    },
+    "standardShort": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    },
+    "unit": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    },
+    "unitNarrow": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    },
+    "unitShort": {
+      "start": "%1$@, %2$@",
+      "middle": "%1$@, %2$@",
+      "end": "%1$@ eta %2$@",
+      "2": "%1$@ eta %2$@"
+    }
+  }
+}

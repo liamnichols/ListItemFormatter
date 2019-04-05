@@ -206,7 +206,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  CFPropertyList
   cocoapods (= 1.6.1)
   faraday
   fastlane

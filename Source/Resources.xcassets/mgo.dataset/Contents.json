@@ -1,1 +1,12 @@
-{"info":{"version":1,"author":"xcode"},"data":[{"idiom":"universal","filename":"mgo.plist"}]}
+{
+  "info": {
+    "version": 1,
+    "author": "xcode"
+  },
+  "data": [
+    {
+      "idiom": "universal",
+      "filename": "mgo.json"
+    }
+  ]
+}
