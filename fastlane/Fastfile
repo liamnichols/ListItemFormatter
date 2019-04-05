@@ -27,6 +27,8 @@ lane :update_version do |options|
   version_bump_podspec(path: "ListItemFormatter.podspec", version_number: version_number)
 
   git_commit(path: ".", message: "Update version to '#{version_number}'")
+  update_docs(version_number: version_number)
+
   push_to_git_remote
 
   carthage(command: "build", platform: "all", no_skip_current: true)
@@ -86,6 +88,21 @@ lane :test do
 
   carthage(command: "build", platform: "all", no_skip_current: true)
   pod_lib_lint
+end
+
+desc "Update docs and commit changes."
+lane :update_docs do |options|
+
+  UI.message "Updating docs..."
+  jazzy(config: ".jazzy.yml")
+  version_number = options[:version_number] || get_version_number(xcodeproj: "ListItemFormatter.xcodeproj", target: "ListItemFormatter iOS")
+
+  docs_updated = Dir.chdir("..") do
+    sh("git add docs")
+    sh("git status --porcelain docs")
+  end
+
+  git_commit(path: "docs", message: "Update docs to '#{version_number}'") if docs_updated
 end
 
 lane :import_data do |options|
