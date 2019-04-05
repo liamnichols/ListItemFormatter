@@ -1,7 +1,12 @@
 lane :update_version do |options|
 
-  version_number = options[:version] ||= UI.input "Please provide the version number:"
+  version_number = options[:version_number] ||= UI.input "Please provide the version number:"
+  release_name = options[:release_name] ||= UI.input "Please provide a name for this release:"
   tag = "v#{version_number}"
+
+  Dir.chdir("..") do
+    sh("git", "fetch", "--all")
+  end
 
   UI.user_error! "Version #{version_number} already exists" if git_tag_exists(tag: tag)
 
@@ -22,9 +27,48 @@ lane :update_version do |options|
   version_bump_podspec(path: "ListItemFormatter.podspec", version_number: version_number)
 
   git_commit(path: ".", message: "Update version to '#{version_number}'")
-  add_git_tag(tag: tag)
+  push_to_git_remote
 
-  push_to_git_remote if UI.confirm "Push changes to remote?"
+  carthage(command: "build", platform: "all", no_skip_current: true)
+  carthage(command: "archive", output: "ListItemFormatter.framework.zip")
+
+  set_github_release(
+    repository_name: "liamnichols/ListItemFormatter",
+    name: release_name,
+    commitish: "master",
+    tag_name: tag,
+    description: get_changelog,
+    upload_assets: ["ListItemFormatter.framework.zip"]
+  )
+
+  pod_push(use_bundle_exec: true)
+end
+
+lane :get_changelog do
+
+  latest_release = github_api(
+    path: "/repos/liamnichols/ListItemFormatter/releases/latest",
+    error_handlers: {
+      404 => proc do
+        UI.message "Latest release does not exist, changelog will be entire commit history"
+      end
+    }
+  )
+
+  git_log = ""
+  pretty = "- %s by %an"
+  if latest_release[:status] == 200
+    last_tag = latest_release[:json]["tag_name"]
+    git_log = changelog_from_git_commits(pretty: pretty, between: [last_tag, "HEAD"])
+  else
+    git_log = changelog_from_git_commits(pretty: pretty, commits_count: 1000)
+  end
+
+  commits = git_log.split("\n").select { |c| c[/\(#[0-9]*\)/] }
+  changelog = commits.join("\n\n")
+
+  UI.important "CHANGELOG: \n\n#{changelog}"
+  changelog
 end
 
 lane :test do

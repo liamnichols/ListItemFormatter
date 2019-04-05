@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/liamnichols/ListItemFormatter'
   s.author = { 'liamnichols' => 'liam.nichols.ln@gmail.com' }
   s.social_media_url = 'https://twitter.com/liamnichols_'
-  s.source = { :git => 'https://github.com/liamnichols/ListItemFormatter.git', :tag => s.version.to_s }
+  s.source = { :git => 'https://github.com/liamnichols/ListItemFormatter.git', :tag => "v#{s.version}" }
 
   s.ios.deployment_target = '9.0'
   s.osx.deployment_target = '10.11'
