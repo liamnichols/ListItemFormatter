@@ -52,4 +52,7 @@ lane :import_data do |options|
 
   import "import_cldr_data.rb"
   import_cldr_data(cldr_tag, "../Source/Resources.xcassets")
+
+  UI.success "Complete!"
+  run_tests(scheme: "ListItemFormatter macOS", destination: "platform=macOS", clean: true) if UI.confirm "Would you like to run macOS tests?"
 end
