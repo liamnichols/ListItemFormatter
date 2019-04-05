@@ -104,8 +104,8 @@ import Foundation
     ///
     /// - Returns: A string representation of `list` formatted using the receiver’s
     ///  current settings.
-    @objc public func string(from list: [String]) -> String? {
-        return string(for: list)
+    @objc(stringFromList:) public func string(from list: [String]) -> String {
+        return string(for: list) ?? ""
     }
 
     /// Returns an attributed strign representation of the given list items formatted
@@ -124,21 +124,26 @@ import Foundation
     ///
     /// - Returns: An attributed string representation of `list` formatted using the
     ///  receiver’s current settings.
-    @objc public func attributedString(from list: [String]) -> NSAttributedString? {
+    @objc(attributedStringFromList:) public func attributedString(from list: [String]) -> NSAttributedString {
 
-        return attributedString(for: list, withDefaultAttributes: defaultAttributes)
+        return attributedString(for: list, withDefaultAttributes: defaultAttributes) ?? NSAttributedString()
     }
 
-    public override init() {
-        mode = .standard
-        style = .default
-        locale = .autoupdatingCurrent
+    public convenience override init() {
+        self.init(formatProvider: FormatProvider())
+    }
+
+    // MARK: - Internal Interface
+
+    let formatProvider: FormatProvider
+
+    init(formatProvider: FormatProvider) {
+        self.formatProvider = formatProvider
+        self.mode = .standard
+        self.style = .default
+        self.locale = .autoupdatingCurrent
         super.init()
     }
-
-    // MARK: - Private
-
-    private let formatProvider = FormatProvider()
 
     // MARK: - NSSecureCoding
 
@@ -150,6 +155,7 @@ import Foundation
             let style = Style(rawValue: aDecoder.decodeInteger(forKey: "style")),
             let locale = (aDecoder.decodeObject(of: NSLocale.self, forKey: "locale") as Locale?) else { return nil }
 
+        self.formatProvider = FormatProvider()
         self.mode = mode
         self.style = style
         self.locale = locale
