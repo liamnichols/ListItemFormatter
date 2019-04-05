@@ -80,3 +80,15 @@ formatter.attributedString(from: ["Swift", "Objective-C"]) // NSAttributedString
 </html>
 */
 ```
+
+## Installation
+
+### Carthage
+
+To integrate ListItemFormatter into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
+
+```
+github "liamnichols/ListItemFormatter"
+```
+
+Follow the [instructions](https://github.com/Carthage/Carthage#quick-start) to add ListItemFormatter.framework to your project.
