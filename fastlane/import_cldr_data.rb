@@ -1,6 +1,5 @@
 require 'faraday'
 require 'json'
-require 'cfpropertylist'
 require 'fileutils'
 
 IS_PARTIAL_DATA_FETCH_ENABLED = false # When set to true, allows fetching of only part of the data to speed up testing
@@ -107,7 +106,7 @@ class CLDRExporter
       FileUtils.mkdir_p(asset_catalog)
 
       File.open(contents_path,"w") do |f|
-        f.write(contents.to_json)
+        f.write(JSON.pretty_generate(contents))
       end
     end
 
@@ -160,37 +159,43 @@ class DataAsset
     raise "Not Implemented"
   end
 
-  def contents
-    {
-      :info => {
-        :version => 1,
-        :author => "xcode"
-      },
-      :data => [
-        {
-          :idiom => "universal",
-          :filename => "#{name}.plist"
-        }
-      ]
-    }
-  end
-
   def write(directory)
 
     dataset_path = File.join(directory, "#{name}.dataset")
-    plist_path = File.join(dataset_path, "#{name}.plist")
+    data_path = File.join(dataset_path, filename)
     contents_path = File.join(dataset_path, "Contents.json")
 
     FileUtils.mkdir_p(dataset_path)
 
-    plist = CFPropertyList::List.new({ :formatted => true })
-    plist.value = CFPropertyList.guess(data)
-    plist.save(plist_path, CFPropertyList::List::FORMAT_XML)
+    File.open(data_path, "w") do |f|
+      f.write(JSON.pretty_generate(data))
+    end
 
     File.open(contents_path,"w") do |f|
-      f.write(contents.to_json)
+      f.write(JSON.pretty_generate(contents))
     end
   end
+
+  private
+
+    def filename
+      "#{name}.json"
+    end
+
+    def contents
+      {
+        :info => {
+          :version => 1,
+          :author => "xcode"
+        },
+        :data => [
+          {
+            :idiom => "universal",
+            :filename => filename
+          }
+        ]
+      }
+    end
 end
 
 class LocaleInformation < DataAsset

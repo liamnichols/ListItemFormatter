@@ -79,7 +79,7 @@ struct Format: Decodable {
 
     init(localeIdentifier: String, bundle: Bundle = .main) throws {
         let asset = try NSDataAsset.loadDataAsset(named: localeIdentifier, in: bundle)
-        self = try PropertyListDecoder().decode(Format.self, from: asset.data)
+        self = try JSONDecoder().decode(Format.self, from: asset.data)
     }
 
     func getPatterns(for style: ListItemFormatter.Style, mode: ListItemFormatter.Mode) -> Patterns? {
