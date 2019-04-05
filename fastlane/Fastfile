@@ -94,8 +94,15 @@ desc "Update docs and commit changes."
 lane :update_docs do |options|
 
   UI.message "Updating docs..."
-  jazzy(config: ".jazzy.yml")
   version_number = options[:version_number] || get_version_number(xcodeproj: "ListItemFormatter.xcodeproj", target: "ListItemFormatter iOS")
+
+  Dir.chdir("..") do
+    yml = File.read(".jazzy.yml")
+    yml = yml.gsub(%r{:\s\d+\.\d+(\.\d+)?}i, ": #{version_number}")
+    File.open(".jazzy.yml", "w") { |file| file.puts yml }
+  end
+
+  jazzy(config: ".jazzy.yml")
 
   docs_updated = Dir.chdir("..") do
     sh("git add docs")

@@ -5,6 +5,7 @@ Pod::Spec.new do |s|
   s.summary = 'Localised list formatting in Swift and Objective-C'
   s.description = 'ListItemFormatter is an NSFormatter subclass that supports formatting list items to the Unicode CLDR specification.'
   s.homepage = 'https://github.com/liamnichols/ListItemFormatter'
+  s.documentation_url = 'https://liamnichols.github.io/ListItemFormatter'
   s.author = { 'liamnichols' => 'liam.nichols.ln@gmail.com' }
   s.social_media_url = 'https://twitter.com/liamnichols_'
   s.source = { :git => 'https://github.com/liamnichols/ListItemFormatter.git', :tag => "v#{s.version}" }
