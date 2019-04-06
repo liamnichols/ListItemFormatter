@@ -105,8 +105,9 @@ lane :update_docs do |options|
   jazzy(config: ".jazzy.yml")
 
   docs_updated = Dir.chdir("..") do
-    sh("git add docs")
-    sh("git status --porcelain docs")
+    has_diff = ! sh("git status --porcelain docs").empty?
+    sh("git add docs") if has_diff
+    has_diff
   end
 
   git_commit(path: "docs", message: "Update docs to '#{version_number}'") if docs_updated
