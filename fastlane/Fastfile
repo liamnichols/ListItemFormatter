@@ -96,21 +96,24 @@ lane :update_docs do |options|
   UI.message "Updating docs..."
   version_number = options[:version_number] || get_version_number(xcodeproj: "ListItemFormatter.xcodeproj", target: "ListItemFormatter iOS")
 
+  ensure_git_status_clean
+
   Dir.chdir("..") do
-    yml = File.read(".jazzy.yml")
-    yml = yml.gsub(%r{\d+\.\d+(\.\d+)?}, "#{version_number}")
-    File.open(".jazzy.yml", "w") { |file| file.puts yml }
+    yaml = YAML.load_file(".jazzy.yml")
+    yaml["github_file_prefix"] = "https://github.com/liamnichols/ListItemFormatter/blob/v#{version_number}"
+    yaml["module_version"] = version_number
+    File.open(".jazzy.yml", "w") { |file| YAML.dump(yaml, file) }
   end
 
   jazzy(config: ".jazzy.yml")
 
   docs_updated = Dir.chdir("..") do
     has_diff = ! sh("git status --porcelain docs").empty?
-    sh("git add docs") if has_diff
+    sh("git", "add", ".") if has_diff
     has_diff
   end
 
-  git_commit(path: "docs", message: "Update docs to '#{version_number}'") if docs_updated
+  git_commit(path: ".", message: "Update docs to '#{version_number}'") if docs_updated
 end
 
 lane :import_data do |options|
