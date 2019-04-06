@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ListItemFormatter  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+
+    <a title="ListItemFormatter  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          ListItemFormatter Docs
+        </a>
+         (72% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/liamnichols/ListItemFormatter">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">ListItemFormatter Reference</a>
+      <img class="carat" src="img/carat.png" />
+      ListItemFormatter  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ListItemFormatter.html">ListItemFormatter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ListItemFormatter/Mode.html">– Mode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/ListItemFormatter/Style.html">– Style</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <h1 id='listitemformatter' class='heading'>ListItemFormatter</h1>
+
+<p><a href="https://travis-ci.org/liamnichols/ListItemFormatter"><img src="https://travis-ci.org/liamnichols/ListItemFormatter.svg?branch=master" alt="Build Status"></a></p>
+
+<p><code><a href="Classes/ListItemFormatter.html">ListItemFormatter</a></code> is an <code>NSFormatter</code> subclass that supports formatting list items to the <a href="https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns">Unicode CLDR specification</a>.</p>
+<h2 id='usage' class='heading'>Usage</h2>
+<h3 id='basic-formatting' class='heading'>Basic Formatting</h3>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"Liam"</span><span class="p">,</span> <span class="s">"Jack"</span><span class="p">,</span> <span class="s">"John"</span><span class="p">])</span> <span class="c1">// "Liam, Jack and John"</span>
+</code></pre>
+<h3 id='modes-amp-styles' class='heading'>Modes &amp; Styles</h3>
+
+<p>A <code>style</code> and <code>mode</code> property allow formatting for different types of data (such as units) as well as differnet length variations</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">standard</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"Liam"</span><span class="p">,</span> <span class="s">"Jack"</span><span class="p">,</span> <span class="s">"John"</span><span class="p">])</span> <span class="c1">// "Liam, Jack and John"</span>
+
+<span class="n">formatter</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">or</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"Liam"</span><span class="p">,</span> <span class="s">"Jack"</span><span class="p">])</span> <span class="c1">// "Liam or Jack"</span>
+
+<span class="n">formatter</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">unit</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="o">.</span><span class="n">narrow</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"5ft"</span><span class="p">,</span> <span class="s">"6in"</span><span class="p">])</span> <span class="c1">// "5ft 6in"</span>
+
+<span class="n">formatter</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">unit</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">style</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"5 feet"</span><span class="p">,</span> <span class="s">"6 inch"</span><span class="p">])</span> <span class="c1">// "5 feet, 6 inch"</span>
+</code></pre>
+<h3 id='localisation' class='heading'>Localisation</h3>
+
+<p>The formatter is backed by an export of the Unicode CLDR data (version 35) and just like any other standard <code>NSFormatter</code> you can simply set the <code>locale</code> property to take advantage of over 200 languages and regional formats configurations provided.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kt">Locale</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"ar_LB"</span><span class="p">)</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"ليام"</span><span class="p">,</span> <span class="s">"ليندا"</span><span class="p">,</span> <span class="s">"كوكباد"</span><span class="p">])</span>
+<span class="c1">// "ليام، ليندا، وكوكباد"</span>
+</code></pre>
+
+<p>Here is the complete list of supported language, region, and script code variants:</p>
+
+<blockquote>
+<p>Afrikaans, Aghem, Akan, Albanian, Amharic, Arabic, Armenian, Assamese, Asturian, Asu, Azerbaijani, Bafia, Bambara, Bangla, Basaa, Basque, Belarusian, Bemba, Bena, Bodo, Bosnian, Bosnian (Cyrillic), Breton, Bulgarian, Burmese, Cantonese, Cantonese (Simplified Han), Catalan, Catalan (Spain), Central Atlas Tamazight, Central Kurdish, Chakma, Chechen, Cherokee, Chiga, Chinese, Chinese (Hong Kong (China)), Chinese (Traditional Han), Church Slavic, Colognian, Cornish, Croatian, Czech, Danish, Duala, Dutch, Dzongkha, Embu, English, English (Australia), English (United Kingdom), English (United States), Esperanto, Estonian, Ewe, Ewondo, Faroese, Filipino, Finnish, French, Friulian, Fulah, Galician, Ganda, Georgian, German, Greek, Gujarati, Gusii, Hausa, Hawaiian, Hebrew, Hindi, Hungarian, Icelandic, Igbo, Inari Sami, Indonesian, Interlingua, Irish, Italian, Japanese, Javanese, Jola-Fonyi, Kabuverdianu, Kabyle, Kako, Kalaallisut, Kalenjin, Kamba, Kannada, Kashmiri, Kazakh, Khmer, Kikuyu, Kinyarwanda, Konkani, Korean, Koyra Chiini, Koyraboro Senni, Kurdish, Kwasio, Kyrgyz, Lakota, Langi, Lao, Latvian, Lingala, Lithuanian, Low German, Lower Sorbian, Luba-Katanga, Luo, Luxembourgish, Luyia, Macedonian, Machame, Makhuwa-Meetto, Makonde, Malagasy, Malay, Malayalam, Maltese, Manx, Maori, Marathi, Masai, Mazanderani, Meru, Metaʼ, Mongolian, Morisyen, Mundang, Nama, Nepali, Ngiemboon, Ngomba, North Ndebele, Northern Luri, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, Nuer, Nyankole, Odia, Oromo, Ossetic, Pashto, Persian, Polish, Portuguese, Prussian, Punjabi, Quechua, Romanian, Romansh, Rombo, Rundi, Russian, Rwa, Sakha, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Serbian, Serbian (Latin), Shambala, Shona, Sichuan Yi, Sindhi, Sinhala, Slovak, Slovenian, Soga, Somali, Spanish, Spanish (Dominican Republic), Spanish (Paraguay), Standard Moroccan Tamazight, Swahili, Swedish, Swiss German, Tachelhit, Taita, Tajik, Tamil, Tasawaq, Tatar, Telugu, Teso, Thai, Tibetan, Tigrinya, Tongan, Turkish, Turkmen, Ukrainian, Upper Sorbian, Urdu, Urdu (India), Uyghur, Uzbek, Vai, Vietnamese, Volapük, Vunjo, Walser, Welsh, Western Frisian, Wolof, Xhosa, Yangben, Yiddish, Yoruba, Zarma, Zulu</p>
+</blockquote>
+<h3 id='attributed-strings' class='heading'>Attributed Strings</h3>
+
+<p>The <code>defaultAttributes</code> and <code>itemAttributes</code> allow for customising the object returned by <code>attributedString(from:)</code> in order to add special text effects such as highlighting of list items</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="o">.</span><span class="n">or</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">defaultAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">weight</span><span class="p">:</span> <span class="o">.</span><span class="n">regular</span><span class="p">)]</span>
+<span class="n">formatter</span><span class="o">.</span><span class="n">itemAttributes</span> <span class="o">=</span> <span class="p">[</span><span class="o">.</span><span class="nv">font</span><span class="p">:</span> <span class="kt">UIFont</span><span class="o">.</span><span class="nf">systemFont</span><span class="p">(</span><span class="nv">ofSize</span><span class="p">:</span> <span class="mi">12</span><span class="p">,</span> <span class="nv">weight</span><span class="p">:</span> <span class="o">.</span><span class="n">semibold</span><span class="p">)]</span>
+<span class="n">formatter</span><span class="o">.</span><span class="nf">attributedString</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"Swift"</span><span class="p">,</span> <span class="s">"Objective-C"</span><span class="p">])</span> <span class="c1">// NSAttributedString</span>
+
+<span class="cm">/*
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"&gt;
+    &lt;meta http-equiv="Content-Style-Type" content="text/css"&gt;
+    &lt;title&gt;&lt;/title&gt;
+    &lt;meta name="Generator" content="Cocoa HTML Writer"&gt;
+    &lt;style type="text/css"&gt;
+      p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px '.SF UI Text'}
+      span.s1 {font-family: '.SFUIText-Semibold'; font-weight: bold; font-style: normal; font-size: 12.00pt}
+      span.s2 {font-family: '.SFUIText'; font-weight: normal; font-style: normal; font-size: 12.00pt}
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;p class="p1"&gt;&lt;span class="s1"&gt;Swift&lt;/span&gt;&lt;span class="s2"&gt; or &lt;/span&gt;&lt;span class="s1"&gt;Objective-C&lt;/span&gt;&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+*/</span>
+</code></pre>
+<h2 id='installation' class='heading'>Installation</h2>
+<h3 id='carthage' class='heading'>Carthage</h3>
+
+<p>To integrate ListItemFormatter into your Xcode project using <a href="https://github.com/Carthage/Carthage">Carthage</a>, specify it in your <code>Cartfile</code>:</p>
+<pre class="highlight plaintext"><code>github "liamnichols/ListItemFormatter"
+</code></pre>
+
+<p>Follow the <a href="https://github.com/Carthage/Carthage#quick-start">instructions</a> to add ListItemFormatter.framework to your project.</p>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://github.com/liamnichols" target="_blank" rel="external">Liam Nichols</a>. All rights reserved. (Last updated: 2019-04-06)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
