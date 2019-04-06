@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ListItemFormatter Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+
+    <a name="//apple_ref/swift/Class/ListItemFormatter" class="dashAnchor"></a>
+
+    <a title="ListItemFormatter Class Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          ListItemFormatter Docs
+        </a>
+         (72% documented)
+      </p>
+    
+      <p class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/liamnichols/ListItemFormatter">
+            <img class="header-icon" src="../img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">ListItemFormatter Reference</a>
+      <img class="carat" src="../img/carat.png" />
+      ListItemFormatter Class Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ListItemFormatter.html">ListItemFormatter</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ListItemFormatter/Mode.html">– Mode</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/ListItemFormatter/Style.html">– Style</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            <h1>ListItemFormatter</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">@objc(LNListItemFormatter)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">ListItemFormatter</span> <span class="p">:</span> <span class="kt">Formatter</span><span class="p">,</span> <span class="kt">NSSecureCoding</span></code></pre>
+
+                </div>
+              </div>
+            <p>ListItemFormatter can be used to format variable-length lists of things in a
+ locale-sensitive manner, such as <q>Monday, Tuesday, Friday, and Saturday</q> (in
+ English) versus <q>lundi, mardi, vendredi et samedi</q> (in French).</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17ListItemFormatterAAC4ModeO"></a>
+                    <a name="//apple_ref/swift/Enum/Mode" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17ListItemFormatterAAC4ModeO">Mode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The following constants specify predefined format modes for list items.</p>
+
+<p>The mode is used in conjuction with the <code><a href="../Classes/ListItemFormatter/Style.html">Style</a></code> to pick the most appropriate
+ set of patterns used by the formatter. You can read more about the patterns
+ in the <a href="http://unicode.org/reports/tr35/tr35-general.html#ListPatterns">Unicode documentation</a>.</p>
+
+                        <a href="../Classes/ListItemFormatter/Mode.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(LNListItemFormatterMode)</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Mode</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L35-L46">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:17ListItemFormatterAAC5StyleO"></a>
+                    <a name="//apple_ref/swift/Enum/Style" class="dashAnchor"></a>
+                    <a class="token" href="#/s:17ListItemFormatterAAC5StyleO">Style</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The style is used in conjuction with the <code><a href="../Classes/ListItemFormatter/Mode.html">Mode</a></code> to pick the most appropriate
+ set of patterns used by the formatter. You can read more about the patterns
+ in the <a href="http://unicode.org/reports/tr35/tr35-general.html#ListPatterns">Unicode documentation</a>.</p>
+
+                        <a href="../Classes/ListItemFormatter/Style.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(LNListItemFormatterStyle)</span>
+<span class="kd">public</span> <span class="kd">enum</span> <span class="kt">Style</span> <span class="p">:</span> <span class="kt">Int</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L51-L63">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)mode"></a>
+                    <a name="//apple_ref/swift/Property/mode" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)mode">mode</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The format mode of the receiver.</p>
+
+<p>The default value is set to <code>.standard</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">mode</span><span class="p">:</span> <span class="kt"><a href="../Classes/ListItemFormatter/Mode.html">Mode</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L68">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)style"></a>
+                    <a name="//apple_ref/swift/Property/style" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)style">style</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The format style of the reciever.</p>
+
+<p>The default value is set to <code>.default</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">style</span><span class="p">:</span> <span class="kt"><a href="../Classes/ListItemFormatter/Style.html">Style</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L73">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)locale"></a>
+                    <a name="//apple_ref/swift/Property/locale" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)locale">locale</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The locale for the receiver.</p>
+
+<p>The default value is set to <code>Locale.autoupdatingCurrent</code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">locale</span><span class="p">:</span> <span class="kt">Locale</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L78">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)defaultAttributes"></a>
+                    <a name="//apple_ref/swift/Property/defaultAttributes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)defaultAttributes">defaultAttributes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The default text attributes used to display the output string.</p>
+
+<p>The value of this property is used by the receiver to produce the output
+ <code>NSAttributedString</code> object of <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)attributedStringFromList:">ListItemFormatter.attributedString(from:)</a></code>.</p>
+
+<p>The default value is an empty dictionary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">defaultAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedString</span><span class="o">.</span><span class="kt">Key</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L86">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)itemAttributes"></a>
+                    <a name="//apple_ref/swift/Property/itemAttributes" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)itemAttributes">itemAttributes</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The item specific attributes used to display the list items within the output
+ string.</p>
+
+<p>The value of this property is used by the receiver to produce the output
+ <code>NSAttributedString</code> object of <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)attributedStringFromList:">ListItemFormatter.attributedString(from:)</a></code>,
+ specifically by applying these attributes only to the items within the <code>list</code>
+ array. These attributes are applied on top of <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)defaultAttributes">defaultAttributes</a></code>.</p>
+
+<p>The default value of this property is an empty dictionary.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc</span>
+<span class="kd">public</span> <span class="k">var</span> <span class="nv">itemAttributes</span><span class="p">:</span> <span class="p">[</span><span class="kt">NSAttributedString</span><span class="o">.</span><span class="kt">Key</span> <span class="p">:</span> <span class="kt">Any</span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L97">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)stringFromList:"></a>
+                    <a name="//apple_ref/swift/Method/string(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)stringFromList:">string(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns a string representation of the given list items formatted using the
+receiver’s current settings.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(stringFromList:)</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">string</span><span class="p">(</span><span class="n">from</span> <span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">String</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>list</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list items to be formatted into a localised, human
+readable list.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>A string representation of <code>list</code> formatted using the receiver’s
+current settings.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L107-L109">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)attributedStringFromList:"></a>
+                    <a name="//apple_ref/swift/Method/attributedString(from:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(im)attributedStringFromList:">attributedString(from:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Returns an attributed strign representation of the given list items formatted
+ using the receiver&rsquo;s current settings.</p>
+
+<p>The receiver uses the values set in its <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)defaultAttributes">defaultAttributes</a></code> and
+ <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)itemAttributes">itemAttributes</a></code> properties by first applying the default attributes to the
+ entire string and then adding <code><a href="../Classes/ListItemFormatter.html#/c:@M@ListItemFormatter@objc(cs)LNListItemFormatter(py)itemAttributes">itemAttributes</a></code> to the range of each item
+ within <code>list</code>. This means that attributes in the default attributes will
+ first be applied to the <code>list</code> item ranges and then will be overwritten with
+ values from the item specific attributes if they conflict. This means that
+ you do not need to set the same attributes twice.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@objc(attributedStringFromList:)</span>
+<span class="kd">public</span> <span class="kd">func</span> <span class="nf">attributedString</span><span class="p">(</span><span class="n">from</span> <span class="nv">list</span><span class="p">:</span> <span class="p">[</span><span class="kt">String</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kt">NSAttributedString</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>list</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The list items to be formatted into an attributed,
+localised, human readable list.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An attributed string representation of <code>list</code> formatted using the
+receiver’s current settings.</p>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1/Source/ListItemFormatter.swift#L127-L130">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2019 <a class="link" href="https://github.com/liamnichols" target="_blank" rel="external">Liam Nichols</a>. All rights reserved. (Last updated: 2019-04-06)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.4</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>

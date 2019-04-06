@@ -1,9 +1,14 @@
+---
 clean: true
-author: 'Liam Nichols'
+author: Liam Nichols
 author_url: https://github.com/liamnichols
 github_url: https://github.com/liamnichols/ListItemFormatter
-github_file_prefix: https://github.com/liamnichols/ListItemFormatter/blob/0.0.1
-xcodebuild_arguments: [-project, ListItemFormatter.xcodeproj, -scheme, 'ListItemFormatter iOS']
+github_file_prefix: https://github.com/liamnichols/ListItemFormatter/blob/v0.0.1
+xcodebuild_arguments:
+- "-project"
+- ListItemFormatter.xcodeproj
+- "-scheme"
+- ListItemFormatter iOS
 module: ListItemFormatter
 module_version: 0.0.1
 output: docs
