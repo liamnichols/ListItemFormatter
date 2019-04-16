@@ -87,6 +87,7 @@ lane :test do
   run_tests(scheme: "ListItemFormatter macOS", destination: "platform=macOS", clean: true)
 
   carthage(command: "build", platform: "all", no_skip_current: true)
+  
   pod_lib_lint(allow_warnings: true)
 end
 
