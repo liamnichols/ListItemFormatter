@@ -79,8 +79,6 @@ lane :test do
 
   run_tests(scheme: "ListItemFormatter iOS", device: "iPhone Xs (12.2)", clean: true)
   run_tests(scheme: "ListItemFormatter iOS", device: "iPhone X (12.2)")
-  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone 7 (10.3.1)")
-  run_tests(scheme: "ListItemFormatter iOS", device: "iPhone 6 (9.3)")
 
   run_tests(scheme: "ListItemFormatter tvOS", device: "Apple TV (12.2)", clean: true)
 
