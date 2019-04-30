@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'ListItemFormatter'
-  s.version = '0.0.1'
+  s.version = '0.0.2'
   s.license = { :type => 'MIT', :file => 'LICENSE.txt' }
   s.summary = 'Localised list formatting in Swift and Objective-C'
   s.description = 'ListItemFormatter is an NSFormatter subclass that supports formatting list items to the Unicode CLDR specification.'
