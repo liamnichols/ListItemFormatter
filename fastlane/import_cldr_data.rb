@@ -232,23 +232,15 @@ class ListPatterns < DataAsset
   private
 
     def formatted_list_patterns
-      cldr_list_patterns.map { |k,v| [convert_pattern_name(k), convert_patterns(v)] }.to_h
+      cldr_list_patterns.map { |k,v| [convert_pattern_name(k), v] }.to_h
     end
 
     def cldr_list_patterns
       @cldr_list_patterns
     end
 
-    def convert_patterns(patterns)
-      patterns.transform_values! { |v| convert_argument_specifiers(v) }
-    end
-
     def convert_pattern_name(key)
       uncapitalize(key.gsub("listPattern-type-", "").split("-").map { |x| x.capitalize }.join(""))
-    end
-
-    def convert_argument_specifiers(format)
-      format.gsub(/\{([0-9]+)\}/) { "%#{$1.to_i + 1}$@" }
     end
 
     def uncapitalize(str)
