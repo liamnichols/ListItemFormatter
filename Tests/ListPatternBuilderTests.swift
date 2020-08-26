@@ -89,4 +89,12 @@ class ListPatternBuilderTests: XCTestCase {
         XCTAssertEqual(result.string, "ONE TWO THREE FOUR FIVE SIX SEVEN")
         XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN"])
     }
+
+    func testFormatArgumentWithUnicodeWeirdness() {
+
+        let builder = ListPatternBuilder(patterns: patterns)
+        let result = builder.build(from: ["👍🏽", "👍", "👍👎🏼", "👍👍🏽👍"])
+        XCTAssertEqual(result.string, "👍🏽 [START] 👍 [MIDDLE] 👍👎🏼 [END] 👍👍🏽👍")
+        XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["👍🏽", "👍", "👍👎🏼", "👍👍🏽👍"])
+    }
 }

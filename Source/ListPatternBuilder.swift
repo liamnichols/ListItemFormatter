@@ -69,7 +69,7 @@ class ListPatternBuilder {
 
         var items = items
         var string = items.removeLast()
-        var itemRanges = [(string.startIndex ..< string.endIndex).sameRange(in: string.utf16)!]
+        var itemRanges = [string.startIndex ..< string.endIndex]
         var remainingItems = items
         var nextFormat = patterns.end
 
@@ -79,13 +79,14 @@ class ListPatternBuilder {
             var ranges: [Range<String.Index>] = []
             let formatted = String(format: nextFormat, ranges: &ranges, nextItem, string)
 
-            let formattedUtf16 = formatted.utf16
-            let itemRange = ranges.first(where: { formatted[$0] == nextItem })!.sameRange(in: formattedUtf16)!
-            let stringRange = ranges.first(where: { formatted[$0] == string })!.sameRange(in: formattedUtf16)!
+            let itemRange = ranges.first(where: { formatted[$0] == nextItem })!
+            let stringRange = ranges.first(where: { formatted[$0] == string })!
 
-            let offset = formattedUtf16.distance(from: formattedUtf16.startIndex, to: stringRange.lowerBound)
+            let baseIndex = stringRange.lowerBound
             itemRanges = itemRanges.map {
-                formattedUtf16.index($0.lowerBound, offsetBy: offset) ..< formattedUtf16.index($0.upperBound, offsetBy: offset)
+                let startIndex = formatted.index(baseIndex, offsetBy: string.distance(from: string.startIndex, to: $0.lowerBound))
+                let endIndex = formatted.index(baseIndex, offsetBy: string.distance(from: string.startIndex, to: $0.upperBound))
+                return startIndex ..< endIndex
             }
 
             string = formatted
@@ -95,26 +96,6 @@ class ListPatternBuilder {
 
         return List(string: string,
                     items: items,
-                    itemRanges: itemRanges.map({ $0.sameRange(in: string)! }))
-    }
-}
-
-extension Range where Bound == String.Index {
-
-    func sameRange(in utf16: String.UTF16View) -> Range<String.UTF16View.Index>? {
-
-        guard let lowerBound = lowerBound.samePosition(in: utf16),
-            let upperBound = upperBound.samePosition(in: utf16) else { return nil }
-        return lowerBound ..< upperBound
-    }
-}
-
-extension Range where Bound == String.UTF16View.Index {
-
-    func sameRange(in string: String) -> Range<String.Index>? {
-
-        guard let lowerBound = lowerBound.samePosition(in: string),
-            let upperBound = upperBound.samePosition(in: string) else { return nil }
-        return lowerBound ..< upperBound
+                    itemRanges: itemRanges)
     }
 }

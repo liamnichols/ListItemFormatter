@@ -142,4 +142,36 @@ class ArgumentRangesTests: XCTestCase {
             NSRange(location: 93, length: 6),
         ])
     }
+
+    func testMoreComplicatedArgumentRanges() throws {
+
+        let input = """
+        First String: %@
+        Third String: %3$@
+        Second String: %2$@
+        """
+
+        var ranges: [Range<String.Index>] = []
+        let output = String(format: input, ranges: &ranges, "👍", "👍🏽", "👍👍👍")
+
+        XCTAssertEqual(
+            output,
+            """
+            First String: 👍
+            Third String: 👍👍👍
+            Second String: 👍🏽
+            """
+        )
+
+        XCTAssertEqual(ranges.map({ NSRange($0, in: output) }), [
+            NSRange(location: 14, length: 2),
+            NSRange(location: 31, length: 6),
+            NSRange(location: 53, length: 4)
+        ])
+
+        XCTAssertEqual(
+            ranges.map({ String(output[$0]) }),
+            ["👍", "👍👍👍", "👍🏽"]
+        )
+    }
 }
