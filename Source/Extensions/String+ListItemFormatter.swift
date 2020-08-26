@@ -24,58 +24,37 @@ import Foundation
 
 extension String {
 
-    init(format: String, ranges: inout [Range<String.Index>], _ args: CVarArg...) {
+    init(format: String, ranges: inout [Range<String.Index>], _ args: String...) {
         self.init(format: format, ranges: &ranges, arguments: args)
     }
 
-    init(format: String, ranges: inout [Range<String.Index>], arguments: [CVarArg]) {
-        self.init(format: format, locale: nil, ranges: &ranges, arguments: arguments)
-    }
+    init(format: String, ranges: inout [Range<String.Index>], arguments: [String]) {
+        var string = ""
+        var lowerBound: String.Index = format.startIndex
 
-    init(format: String, locale: Locale?, ranges: inout [Range<String.Index>], _ args: CVarArg...) {
-        self.init(format: format, locale: locale, ranges: &ranges, arguments: args)
-    }
+        let regex = try! NSRegularExpression(pattern: "\\{([0-9]+)\\}")
+        regex.enumerateMatches(in: format, range: NSRange(format.startIndex ..< format.endIndex, in: format)) { result, _, _ in
+            let result = result!
 
-    init(format _format: String, locale: Locale?, ranges: inout [Range<String.Index>], arguments: [CVarArg]) {
-        self.init(format: _format, locale: locale, arguments: arguments)
+            let resultRange = Range(result.range(at: 0), in: format)!
+            let indexRange = Range(result.range(at: 1), in: format)!
+            let index = Int(format[indexRange])!
+            let argument = arguments[index]
 
-        let format = _format as NSString
-        var nextUnassignedIndex: Int = 0
-        var locationOffset: String.IndexDistance = 0
+            let prefixRange = lowerBound ..< resultRange.lowerBound
+            string += format[prefixRange]
 
-        let pattern = "%(([0-9]+)\\$)?(\\.[0-9]+)?([@aAcCdDeEfFgGopsSuUxX]|ld|lu|lx|zx)"
-        let regex = try! NSRegularExpression(pattern: pattern, options: [])
-        let range = NSRange(location: 0, length: format.length)
-        regex.enumerateMatches(in: _format, options: [], range: range) { _match, _, stop in
-            let match = _match!
-            let range = match.range
+            let argumentStartIndex = string.endIndex
+            string += argument
+            let argumentEndIndex = string.endIndex
 
-            let argIndex: Int
-            let indexValueRange = match.range(at: 2)
-            if indexValueRange.location != NSNotFound,
-                let index = Int(format.substring(with: indexValueRange)) {
-                argIndex = index - 1
-            } else {
-                argIndex = nextUnassignedIndex
-                nextUnassignedIndex += 1
-            }
+            ranges.append(argumentStartIndex ..< argumentEndIndex)
 
-            let argValueFormat: NSString
-            let indexRange = match.range(at: 1)
-            if indexRange.location != NSNotFound {
-                let placeholder = format.substring(with: range) as NSString
-                let indexString = format.substring(with: indexRange)
-                argValueFormat = placeholder.replacingOccurrences(of: indexString, with: "") as NSString
-            } else {
-                argValueFormat = format.substring(with: range) as NSString
-            }
-
-            let argValue = NSString(format: argValueFormat, locale: locale, arguments[argIndex])
-            let argRange = NSRange(location: range.location + locationOffset, length: argValue.length)
-
-            ranges.append(Range(argRange, in: self)!)
-
-            locationOffset += (argValue.length - range.length)
+            lowerBound = resultRange.upperBound
         }
+
+        // Close up
+        string += format[lowerBound ..< format.endIndex]
+        self = string
     }
 }
