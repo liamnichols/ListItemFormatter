@@ -26,12 +26,12 @@ import XCTest
 class ListPatternBuilderTests: XCTestCase {
 
     let patterns = Format.Patterns(listPatterns: [
-        "2": "%1$@ [2] %2$@",
-        "6": "%6$@ %5$@ %4$@ %3$@ %2$@ %1$@",
-        "7": "%@ %@ %@ %@ %@ %@ %@",
-        "start": "%1$@ [START] %2$@",
-        "middle": "%1$@ [MIDDLE] %2$@",
-        "end": "%1$@ [END] %2$@"
+        "2": "{0} [2] {1}",
+        "6": "{5} {4} {3} {2} {1} {0}",
+        "7": "{0} {1} {2} {3} {4} {5} {6}",
+        "start": "{0} [START] {1}",
+        "middle": "{0} [MIDDLE] {1}",
+        "end": "{0} [END] {1}"
     ])!
 
     func testNoItemsItems() {

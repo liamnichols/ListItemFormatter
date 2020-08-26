@@ -28,7 +28,7 @@ class ArgumentRangesTests: XCTestCase {
     func testBasicString() throws {
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: "My name is %@.", ranges: &ranges, "Liam")
+        let output = String(format: "My name is {0}.", ranges: &ranges, "Liam")
 
         XCTAssertEqual(output, "My name is Liam.")
         XCTAssertEqual(ranges.map({ output[$0] }), ["Liam"])
@@ -37,7 +37,7 @@ class ArgumentRangesTests: XCTestCase {
     func testArgumentPositionSpecifiers() throws {
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: "Today, %2$@ and %1$@ present to you:", ranges: &ranges, "Liam", "Linda")
+        let output = String(format: "Today, {1} and {0} present to you:", ranges: &ranges, "Liam", "Linda")
 
         XCTAssertEqual(output, "Today, Linda and Liam present to you:")
         XCTAssertEqual(ranges.map({ output[$0] }), ["Linda", "Liam"])
@@ -46,109 +46,46 @@ class ArgumentRangesTests: XCTestCase {
     func testDuplicatesArguments() throws {
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: "Hi %1$@! Your name is %1$@.", ranges: &ranges, "Liam")
+        let output = String(format: "Hi {0}! Your name is {0}.", ranges: &ranges, "Liam")
 
         XCTAssertEqual(output, "Hi Liam! Your name is Liam.")
-        XCTAssertEqual(ranges.map({ output[$0] }), ["Liam", "Liam"])
-    }
-
-    func testMixedArgumentPositionSpecifiers() throws {
-
-        var ranges: [Range<String.Index>] = []
-        let output = String(format: "Hello %1$@ %@.", ranges: &ranges, "Liam", "Nichols")
-
-        XCTAssertEqual(output, "Hello Liam Liam.")
         XCTAssertEqual(ranges.map({ output[$0] }), ["Liam", "Liam"])
     }
 
     func testSwiftStringIndexWeirdness() throws {
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: "%@ and %@ - %@", ranges: &ranges, "👸🏼", "👨🏾‍💻", "Test")
+        let output = String(format: "{0} and {1} - {2}", ranges: &ranges, "👸🏼", "👨🏾‍💻", "Test")
 
         XCTAssertEqual(output, "👸🏼 and 👨🏾‍💻 - Test")
         XCTAssertEqual(ranges.map({ output[$0] }), ["👸🏼", "👨🏾‍💻", "Test"])
     }
 
-    // These tests will be hard to fix since the way we enumerate the format string needs to change.
-    // They only apply to invalid formats so its not that high priority.
-
-//    func testInvalidArgumentPlaceholder() throws {
-//
-//        var ranges: [Range<String.Index>] = []
-//        let output = String(format: "Hello %$ %@.", ranges: &ranges, "Liam", "Nichols")
-//
-//        XCTAssertEqual(output, "Hello $ Liam.")
-//        XCTAssertEqual(ranges.map({ output[$0] }), ["Liam"])
-//    }
-//
-//    func testInvalidPercentInFormatString() throws {
-//
-//        var ranges: [Range<String.Index>] = []
-//        let output = String(format: "Hello % %@.", ranges: &ranges, "Liam", "Nichols")
-//
-//        XCTAssertEqual(output, "Hello @.")
-//        XCTAssertEqual(ranges.map({ output[$0] }), [])
-//    }
-
-    func testValidPercentInFormatString() throws {
-
-        var ranges: [Range<String.Index>] = []
-        let output = String(format: "Progress: %d%%", ranges: &ranges, 50)
-
-        XCTAssertEqual(output, "Progress: 50%")
-        XCTAssertEqual(ranges.map({ output[$0] }), ["50"])
-    }
-
-    func testLocalizedArguments() throws {
-
-        var ranges: [Range<String.Index>] = []
-        let locale = Locale(identifier: "en_GB")
-        let output = String(format: "Item Count: %d", locale: locale, ranges: &ranges, 1234)
-
-        XCTAssertEqual(output, "Item Count: 1,234")
-        XCTAssertEqual(ranges.map({ output[$0] }), ["1,234"])
-    }
-
-    func testPrecisionSpecifier() throws {
-
-        var ranges: [Range<String.Index>] = []
-        let output = String(format: "Unit: %.4d", ranges: &ranges, 2)
-
-        XCTAssertEqual(output, "Unit: 0002")
-        XCTAssertEqual(ranges.map({ output[$0] }), ["0002"])
-    }
-
     func testArgumentRanges() throws {
 
         let input = """
-        First String: %@
-        Third String: %3$@
-        Second String: %2$@
-
-        Integer: %4$d
-        Float With Precision: %5$.2f
+        First String: {0}
+        Third String: {2}
+        Second String: {1}
         """
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: input, ranges: &ranges, "ONE", "TWO", "THREE", 100, 100.1)
+        let output = String(format: input, ranges: &ranges, "ONE", "TWO", "THREE")
 
         XCTAssertFalse(output.isEmpty)
         XCTAssertEqual(ranges.map({ NSRange($0, in: output) }), [
             NSRange(location: 14, length: 3),
             NSRange(location: 32, length: 5),
-            NSRange(location: 53, length: 3),
-            NSRange(location: 67, length: 3),
-            NSRange(location: 93, length: 6),
+            NSRange(location: 53, length: 3)
         ])
     }
 
     func testMoreComplicatedArgumentRanges() throws {
 
         let input = """
-        First String: %@
-        Third String: %3$@
-        Second String: %2$@
+        First String: {0}
+        Third String: {2}
+        Second String: {1}
         """
 
         var ranges: [Range<String.Index>] = []
@@ -173,5 +110,18 @@ class ArgumentRangesTests: XCTestCase {
             ranges.map({ String(output[$0]) }),
             ["👍", "👍👍👍", "👍🏽"]
         )
+    }
+
+    func testBug() throws {
+        let json = #"["roro(همسات المستقبل)","َمنار منار، Alwahabi Alwahabi، و10 آخرين"]"#
+        let data = try XCTUnwrap(json.data(using: .utf8))
+        let array = try JSONDecoder().decode([String].self, from: data)
+        XCTAssertEqual(array.count, 2)
+
+        var ranges: [Range<String.Index>] = []
+        let output = String(format: "{0}، {1}", ranges: &ranges, array.first!, array.last!)
+
+        XCTAssertEqual(output, "roro(همسات المستقبل)، منار منار، Alwahabi Alwahabi، و10 آخرين")
+        XCTAssertEqual(ranges.count, 2)
     }
 }
