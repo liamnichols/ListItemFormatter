@@ -82,10 +82,10 @@ class ListPatternBuilder {
             let itemRange = ranges.first(where: { formatted[$0] == nextItem })!
             let stringRange = ranges.first(where: { formatted[$0] == string })!
 
-            let baseIndex = stringRange.lowerBound
+            let baseIndex = stringRange.lowerBound.samePosition(in: formatted.unicodeScalars)!
             itemRanges = itemRanges.map {
-                let startIndex = formatted.index(baseIndex, offsetBy: string.distance(from: string.startIndex, to: $0.lowerBound))
-                let endIndex = formatted.index(baseIndex, offsetBy: string.distance(from: string.startIndex, to: $0.upperBound))
+                let startIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.lowerBound))
+                let endIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.upperBound))
                 return startIndex ..< endIndex
             }
 

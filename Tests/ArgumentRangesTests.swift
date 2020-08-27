@@ -112,16 +112,15 @@ class ArgumentRangesTests: XCTestCase {
         )
     }
 
-    func testBug() throws {
-        let json = #"["roro(همسات المستقبل)","َمنار منار، Alwahabi Alwahabi، و10 آخرين"]"#
-        let data = try XCTUnwrap(json.data(using: .utf8))
-        let array = try JSONDecoder().decode([String].self, from: data)
-        XCTAssertEqual(array.count, 2)
+    func testCombiningCharacters() throws {
 
         var ranges: [Range<String.Index>] = []
-        let output = String(format: "{0}، {1}", ranges: &ranges, array.first!, array.last!)
+        let output = String(format: "{0} {1}", ranges: &ranges, "A", "َB") // the Arabic fatha has not yet combined as no leading character
 
-        XCTAssertEqual(output, "roro(همسات المستقبل)، منار منار، Alwahabi Alwahabi، و10 آخرين")
-        XCTAssertEqual(ranges.count, 2)
+        XCTAssertEqual(output, "A َB")
+
+        let expected = ["A", "َB"] // the Arabic fatha shhould be pulled back out without the space
+        XCTAssertTrue(expected.last!.unicodeScalars.count == 2)
+        XCTAssertEqual(ranges.map({ String(output[$0]) }), expected) // Range should incoporate the space(?) since it can't just be the fatha as it combined
     }
 }

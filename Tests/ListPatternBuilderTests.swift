@@ -97,4 +97,13 @@ class ListPatternBuilderTests: XCTestCase {
         XCTAssertEqual(result.string, "👍🏽 [START] 👍 [MIDDLE] 👍👎🏼 [END] 👍👍🏽👍")
         XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["👍🏽", "👍", "👍👎🏼", "👍👍🏽👍"])
     }
+
+    func testWithCombiningCharacters() {
+        // https://en.wikipedia.org/wiki/Combining_character
+
+        let builder = ListPatternBuilder(patterns: patterns)
+        let result = builder.build(from: ["A", "B", "َC", "َD"])
+        XCTAssertEqual(result.string, "A [START] B [MIDDLE] َC [END] َD")
+        XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["A", "B", "َC", "َD"])
+    }
 }
