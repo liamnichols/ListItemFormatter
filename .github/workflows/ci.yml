@@ -10,9 +10,9 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        xcode_version: ['10.3.1', '11.6', '12_beta']
+        xcode_version: ['10.3', '11.6', '12_beta']
         include:
-        - xcode_version: '10.3.1'
+        - xcode_version: '10.3'
           destination_ios: 'OS=12.4,name=iPhone SE'
           destination_macos: 'platform=OS X'
         - xcode_version: '11.6'
