@@ -25,6 +25,13 @@ import Foundation
 /// https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns
 class ListPatternBuilder {
 
+    struct OutputComponent {
+
+        let string: String
+
+        let isItem: Bool
+    }
+
     struct List {
 
         let string: String
@@ -58,11 +65,18 @@ class ListPatternBuilder {
     }
 
     private func listByUsing(fixedFormat format: Pattern, for items: [String]) -> List {
+        precondition(format.placeholderCount == items.count)
 
-        var ranges: [Range<String.Index>] = []
-        return List(string: String(format: format.base, ranges: &ranges, arguments: items),
-                    items: items,
-                    itemRanges: ranges)
+        let components = format.tokens.reduce(into: [OutputComponent]()) { result, token in
+            switch token {
+            case .text(let value):
+                result.append(OutputComponent(string: String(value), isItem: false))
+            case .placeholder(let index):
+                result.append(OutputComponent(string: items[index], isItem: true))
+            }
+        }
+
+        return List(components: components, items: items)
     }
 
     private func listByUsingStartMiddleAndEndFormat(between items: [String]) -> List {
@@ -97,5 +111,31 @@ class ListPatternBuilder {
         return List(string: string,
                     items: items,
                     itemRanges: itemRanges)
+    }
+}
+
+extension ListPatternBuilder.List {
+    init(components: [ListPatternBuilder.OutputComponent], items: [String]) {
+        // Create the String before we construct the ranges
+        let unicodeScalars = components.reduce(into: [UnicodeScalar]()) { result, component in
+            result.append(contentsOf: component.string.unicodeScalars)
+        }
+        let string = String(String.UnicodeScalarView(unicodeScalars))
+
+        // Construct the ranges
+        var itemRanges: [Range<String.Index>] = []
+        var offset: Int = 0
+        for component in components {
+            let startOffset = offset
+            let endOffset = offset + component.string.unicodeScalars.count
+
+            if component.isItem {
+                itemRanges.append(String.Index(utf16Offset: startOffset, in: string) ..< String.Index(utf16Offset: endOffset, in: string))
+            }
+
+            offset = endOffset
+        }
+
+        self.init(string: string, items: items, itemRanges: itemRanges)
     }
 }
