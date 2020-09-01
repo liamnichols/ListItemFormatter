@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  ios_unit_tests:
+    name: iOS Unit Tests
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        xcode_version: ['10.3.1', '11.6', '12_beta']
+        include:
+        - xcode_version: '10.3.1'
+          destination: 'OS=12.4,name=iPhone SE'
+        - xcode_version: '11.6'
+          destination: 'OS=13.6,name=iPhone 11 Pro'
+        - xcode_version: '12_beta'
+          destination: 'OS=14.0,name=iPhone 11 Pro'
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_{{ matrix.xcode_version }}.app/Contents/Developer
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Test
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination }}" clean test
