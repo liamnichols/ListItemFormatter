@@ -25,6 +25,13 @@ import Foundation
 /// https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns
 class ListPatternBuilder {
 
+    struct OutputComponent {
+
+        let string: String
+
+        let isItem: Bool
+    }
+
     struct List {
 
         let string: String
@@ -57,45 +64,73 @@ class ListPatternBuilder {
         return listByUsingStartMiddleAndEndFormat(between: items)
     }
 
-    private func listByUsing(fixedFormat format: String, for items: [String]) -> List {
+    private func listByUsing(fixedFormat format: Pattern, for items: [String]) -> List {
+        precondition(format.placeholderCount == items.count)
 
-        var ranges: [Range<String.Index>] = []
-        return List(string: String(format: format, ranges: &ranges, arguments: items),
-                    items: items,
-                    itemRanges: ranges)
+        let components = format.tokens.reduce(into: [OutputComponent]()) { result, token in
+            switch token {
+            case .text(let value):
+                result.append(OutputComponent(string: String(value), isItem: false))
+            case .placeholder(let index):
+                result.append(OutputComponent(string: items[index], isItem: true))
+            }
+        }
+
+        return List(components: components, items: items)
     }
 
     private func listByUsingStartMiddleAndEndFormat(between items: [String]) -> List {
-
         var items = items
-        var string = items.removeLast()
-        var itemRanges = [string.startIndex ..< string.endIndex]
-        var remainingItems = items
-        var nextFormat = patterns.end
+        var components = [OutputComponent(string: items.removeLast(), isItem: true)]
+        var pattern = patterns.end
 
-        while !remainingItems.isEmpty {
+        while let nextItem = items.popLast() {
+            // Ensure the next pattern is correctly picked
+            defer { pattern = items.count == 1 ? patterns.start : patterns.middle }
 
-            let nextItem = remainingItems.removeLast()
-            var ranges: [Range<String.Index>] = []
-            let formatted = String(format: nextFormat, ranges: &ranges, nextItem, string)
-
-            let itemRange = ranges.first(where: { formatted[$0] == nextItem })!
-            let stringRange = ranges.first(where: { formatted[$0] == string })!
-
-            let baseIndex = stringRange.lowerBound.samePosition(in: formatted.unicodeScalars)!
-            itemRanges = itemRanges.map {
-                let startIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.lowerBound))
-                let endIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.upperBound))
-                return startIndex ..< endIndex
+            // Convert the tokens into a new array of output components
+            components = pattern.tokens.reduce(into: [OutputComponent]()) { result, token in
+                switch token {
+                case .text(let value):
+                    result.append(OutputComponent(string: String(value), isItem: false))
+                case .placeholder(0):
+                    result.append(OutputComponent(string: nextItem, isItem: true))
+                case .placeholder(1):
+                    result.append(contentsOf: components)
+                case .placeholder:
+                    fatalError("start/middle/end patterns must only contain 2 placeholders")
+                }
             }
-
-            string = formatted
-            itemRanges.insert(itemRange, at: 0)
-            nextFormat = remainingItems.count == 1 ? patterns.start : patterns.middle
         }
 
-        return List(string: string,
-                    items: items,
-                    itemRanges: itemRanges)
+        return List(components: components, items: items)
+    }
+}
+
+extension ListPatternBuilder.List {
+    init(components: [ListPatternBuilder.OutputComponent], items: [String]) {
+        // Create the String before we construct the ranges
+        let unicodeScalars = components.reduce(into: [UnicodeScalar]()) { result, component in
+            result.append(contentsOf: component.string.unicodeScalars)
+        }
+        let unicodeScalarView = String.UnicodeScalarView(unicodeScalars)
+        let string = String(unicodeScalarView)
+
+        // Construct the ranges
+        var itemRanges: [Range<String.Index>] = []
+        var offset: Int = 0
+        for component in components {
+            let endOffset = offset + component.string.unicodeScalars.count
+            let startIndex = unicodeScalarView.index(unicodeScalarView.startIndex, offsetBy: offset)
+            let endIndex = unicodeScalarView.index(unicodeScalarView.startIndex, offsetBy: endOffset)
+
+            if component.isItem {
+                itemRanges.append(startIndex ..< endIndex)
+            }
+
+            offset = endOffset
+        }
+
+        self.init(string: string, items: items, itemRanges: itemRanges)
     }
 }
