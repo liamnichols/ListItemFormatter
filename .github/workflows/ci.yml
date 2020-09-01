@@ -31,6 +31,6 @@ jobs:
       with:
         bundler-cache: true
     - name: Run Tests - iOS
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination_ios }}" clean test
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination_ios }}" clean test | bundle exec xcpretty
     - name: Run Tests - macOS
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter macOS" -destination "${{ matrix.destination_macos }}" clean test
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter macOS" -destination "${{ matrix.destination_macos }}" clean test | bundle exec xcpretty
