@@ -5,7 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  ios_unit_tests:
+  unit_tests:
     name: Unit Tests (Xcode ${{ matrix.xcode_version }})
     runs-on: macos-latest
     strategy:
@@ -39,3 +39,29 @@ jobs:
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter macOS" -destination "${{ matrix.destination_macos }}" clean test | bundle exec xcpretty
     - name: Run Tests - tvOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter tvOS" -destination "${{ matrix.destination_tvos }}" clean test | bundle exec xcpretty
+
+  check_carthage:
+    name: Check Carthage
+    runs-on: macos-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Carthage Build
+      run: carthage build --platform all --no-skip-current
+
+  check_cocoapods:
+    name: Check CocoaPods
+    runs-on: macos-latest
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v2
+    - name: Setup Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        bundler-cache: true
+    - name: Pod Spec Lint
+      run: bundle exec pod spec lint
