@@ -17,7 +17,6 @@
 		533286112254EEB500140D57 /* FormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EE2233FE4700403C74 /* FormatTests.swift */; };
 		533286122254EEB500140D57 /* LocalInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EC2233F29A00403C74 /* LocalInformationTests.swift */; };
 		533286132254EEB500140D57 /* ListPatternBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7E5223267F200403C74 /* ListPatternBuilderTests.swift */; };
-		533286142254EEB500140D57 /* ArgumentRangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F722342D6A00403C74 /* ArgumentRangesTests.swift */; };
 		533286152254EEB500140D57 /* LNListPatternFormatterObjcInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7E82232B60000403C74 /* LNListPatternFormatterObjcInterfaceTests.m */; };
 		533286162254EEBB00140D57 /* ArchivedFormatter_Invalid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CA22357AB900B951D4 /* ArchivedFormatter_Invalid.plist */; };
 		533286172254EEBB00140D57 /* ArchivedFormatter_Valid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CB22357ABA00B951D4 /* ArchivedFormatter_Valid.plist */; };
@@ -29,7 +28,6 @@
 		5332861D2254EED300140D57 /* LocaleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7DD2231C56300403C74 /* LocaleInformation.swift */; };
 		5332861E2254EED300140D57 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C99D322358F5600B951D4 /* Format.swift */; };
 		5332861F2254EED300140D57 /* NSDataAsset+ListItemFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7DF2231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift */; };
-		533286202254EED300140D57 /* String+ListItemFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F522342CD500403C74 /* String+ListItemFormatter.swift */; };
 		534C99CC22357ABA00B951D4 /* ArchivedFormatter_Invalid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CA22357AB900B951D4 /* ArchivedFormatter_Invalid.plist */; };
 		534C99CD22357ABA00B951D4 /* ArchivedFormatter_Valid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CB22357ABA00B951D4 /* ArchivedFormatter_Valid.plist */; };
 		534C99D422358F5600B951D4 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C99D322358F5600B951D4 /* Format.swift */; };
@@ -40,7 +38,6 @@
 		534C99F4223591F800B951D4 /* LocaleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7DD2231C56300403C74 /* LocaleInformation.swift */; };
 		534C99F5223591F800B951D4 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = 534C99D322358F5600B951D4 /* Format.swift */; };
 		534C99F6223591F800B951D4 /* NSDataAsset+ListItemFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7DF2231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift */; };
-		534C99F7223591F800B951D4 /* String+ListItemFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F522342CD500403C74 /* String+ListItemFormatter.swift */; };
 		534C99F8223591F800B951D4 /* ListItemFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 53F36125222E656500D93A5D /* ListItemFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		534C99F9223591F800B951D4 /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539CE7D62231BE0000403C74 /* Resources.xcassets */; };
 		534C99FA2235924A00B951D4 /* ListItemFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F36130222E656500D93A5D /* ListItemFormatterTests.swift */; };
@@ -48,7 +45,6 @@
 		534C99FC2235924A00B951D4 /* FormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EE2233FE4700403C74 /* FormatTests.swift */; };
 		534C99FD2235924A00B951D4 /* LocalInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EC2233F29A00403C74 /* LocalInformationTests.swift */; };
 		534C99FE2235924A00B951D4 /* ListPatternBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7E5223267F200403C74 /* ListPatternBuilderTests.swift */; };
-		534C99FF2235924A00B951D4 /* ArgumentRangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F722342D6A00403C74 /* ArgumentRangesTests.swift */; };
 		534C9A002235924A00B951D4 /* LNListPatternFormatterObjcInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7E82232B60000403C74 /* LNListPatternFormatterObjcInterfaceTests.m */; };
 		534C9A012235924A00B951D4 /* ArchivedFormatter_Invalid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CA22357AB900B951D4 /* ArchivedFormatter_Invalid.plist */; };
 		534C9A022235924A00B951D4 /* ArchivedFormatter_Valid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CB22357ABA00B951D4 /* ArchivedFormatter_Valid.plist */; };
@@ -62,8 +58,6 @@
 		539CE7EB2233E73A00403C74 /* FormatProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EA2233E73A00403C74 /* FormatProviderTests.swift */; };
 		539CE7ED2233F29A00403C74 /* LocalInformationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EC2233F29A00403C74 /* LocalInformationTests.swift */; };
 		539CE7EF2233FE4700403C74 /* FormatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EE2233FE4700403C74 /* FormatTests.swift */; };
-		539CE7F622342CD500403C74 /* String+ListItemFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F522342CD500403C74 /* String+ListItemFormatter.swift */; };
-		539CE7F822342D6A00403C74 /* ArgumentRangesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7F722342D6A00403C74 /* ArgumentRangesTests.swift */; };
 		53F3612C222E656500D93A5D /* ListItemFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53F36122222E656500D93A5D /* ListItemFormatter.framework */; };
 		53F36131222E656500D93A5D /* ListItemFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F36130222E656500D93A5D /* ListItemFormatterTests.swift */; };
 		53F36133222E656500D93A5D /* ListItemFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 53F36125222E656500D93A5D /* ListItemFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -116,8 +110,6 @@
 		539CE7EA2233E73A00403C74 /* FormatProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatProviderTests.swift; sourceTree = "<group>"; };
 		539CE7EC2233F29A00403C74 /* LocalInformationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalInformationTests.swift; sourceTree = "<group>"; };
 		539CE7EE2233FE4700403C74 /* FormatTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatTests.swift; sourceTree = "<group>"; };
-		539CE7F522342CD500403C74 /* String+ListItemFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ListItemFormatter.swift"; sourceTree = "<group>"; };
-		539CE7F722342D6A00403C74 /* ArgumentRangesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArgumentRangesTests.swift; sourceTree = "<group>"; };
 		53F36122222E656500D93A5D /* ListItemFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListItemFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53F36125222E656500D93A5D /* ListItemFormatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListItemFormatter.h; sourceTree = "<group>"; };
 		53F36126222E656500D93A5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -189,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				539CE7DF2231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift */,
-				539CE7F522342CD500403C74 /* String+ListItemFormatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,7 +251,6 @@
 				539CE7EE2233FE4700403C74 /* FormatTests.swift */,
 				539CE7EC2233F29A00403C74 /* LocalInformationTests.swift */,
 				539CE7E5223267F200403C74 /* ListPatternBuilderTests.swift */,
-				539CE7F722342D6A00403C74 /* ArgumentRangesTests.swift */,
 				539CE7E82232B60000403C74 /* LNListPatternFormatterObjcInterfaceTests.m */,
 				539CE7F022340EEA00403C74 /* Resources */,
 				53F36132222E656500D93A5D /* Info.plist */,
@@ -523,7 +513,6 @@
 				5332861F2254EED300140D57 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				5332861A2254EED300140D57 /* ListItemFormatter.swift in Sources */,
 				5332861E2254EED300140D57 /* Format.swift in Sources */,
-				533286202254EED300140D57 /* String+ListItemFormatter.swift in Sources */,
 				5332861C2254EED300140D57 /* ListPatternBuilder.swift in Sources */,
 				532D2F4524FE9A6C00883801 /* Pattern.swift in Sources */,
 				5332861B2254EED300140D57 /* FormatProvider.swift in Sources */,
@@ -537,7 +526,6 @@
 				5332860F2254EEB500140D57 /* ListItemFormatterTests.swift in Sources */,
 				533286152254EEB500140D57 /* LNListPatternFormatterObjcInterfaceTests.m in Sources */,
 				533286102254EEB500140D57 /* FormatProviderTests.swift in Sources */,
-				533286142254EEB500140D57 /* ArgumentRangesTests.swift in Sources */,
 				533286122254EEB500140D57 /* LocalInformationTests.swift in Sources */,
 				533286132254EEB500140D57 /* ListPatternBuilderTests.swift in Sources */,
 				533286112254EEB500140D57 /* FormatTests.swift in Sources */,
@@ -552,7 +540,6 @@
 				534C99F6223591F800B951D4 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				534C99F1223591F800B951D4 /* ListItemFormatter.swift in Sources */,
 				534C99F5223591F800B951D4 /* Format.swift in Sources */,
-				534C99F7223591F800B951D4 /* String+ListItemFormatter.swift in Sources */,
 				534C99F3223591F800B951D4 /* ListPatternBuilder.swift in Sources */,
 				532D2F4424FE9A6B00883801 /* Pattern.swift in Sources */,
 				534C99F2223591F800B951D4 /* FormatProvider.swift in Sources */,
@@ -565,7 +552,6 @@
 			files = (
 				534C99FC2235924A00B951D4 /* FormatTests.swift in Sources */,
 				534C99FE2235924A00B951D4 /* ListPatternBuilderTests.swift in Sources */,
-				534C99FF2235924A00B951D4 /* ArgumentRangesTests.swift in Sources */,
 				534C99FD2235924A00B951D4 /* LocalInformationTests.swift in Sources */,
 				534C99FA2235924A00B951D4 /* ListItemFormatterTests.swift in Sources */,
 				534C99FB2235924A00B951D4 /* FormatProviderTests.swift in Sources */,
@@ -583,7 +569,6 @@
 				534C99D422358F5600B951D4 /* Format.swift in Sources */,
 				539CE7E02231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				539CE7DE2231C56300403C74 /* LocaleInformation.swift in Sources */,
-				539CE7F622342CD500403C74 /* String+ListItemFormatter.swift in Sources */,
 				532D2F4324FE99A700883801 /* Pattern.swift in Sources */,
 				53F3613D222E657100D93A5D /* ListItemFormatter.swift in Sources */,
 			);
@@ -599,7 +584,6 @@
 				539CE7ED2233F29A00403C74 /* LocalInformationTests.swift in Sources */,
 				53F36131222E656500D93A5D /* ListItemFormatterTests.swift in Sources */,
 				539CE7EB2233E73A00403C74 /* FormatProviderTests.swift in Sources */,
-				539CE7F822342D6A00403C74 /* ArgumentRangesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
