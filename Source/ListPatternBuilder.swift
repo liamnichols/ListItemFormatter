@@ -120,17 +120,19 @@ extension ListPatternBuilder.List {
         let unicodeScalars = components.reduce(into: [UnicodeScalar]()) { result, component in
             result.append(contentsOf: component.string.unicodeScalars)
         }
-        let string = String(String.UnicodeScalarView(unicodeScalars))
+        let unicodeScalarView = String.UnicodeScalarView(unicodeScalars)
+        let string = String(unicodeScalarView)
 
         // Construct the ranges
         var itemRanges: [Range<String.Index>] = []
         var offset: Int = 0
         for component in components {
-            let startOffset = offset
             let endOffset = offset + component.string.unicodeScalars.count
+            let startIndex = unicodeScalarView.index(unicodeScalarView.startIndex, offsetBy: offset)
+            let endIndex = unicodeScalarView.index(unicodeScalarView.startIndex, offsetBy: endOffset)
 
             if component.isItem {
-                itemRanges.append(String.Index(utf16Offset: startOffset, in: string) ..< String.Index(utf16Offset: endOffset, in: string))
+                itemRanges.append(startIndex ..< endIndex)
             }
 
             offset = endOffset
