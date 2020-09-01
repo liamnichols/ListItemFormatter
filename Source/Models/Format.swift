@@ -29,32 +29,32 @@ import AppKit
 
 struct Format: Decodable {
 
-    class Patterns: Decodable {
+    class Patterns {
 
-        internal let start: String
+        internal let start: Pattern
 
-        internal let middle: String
+        internal let middle: Pattern
 
-        internal let end: String
+        internal let end: Pattern
 
-        internal let fixed: [Int: String]
+        internal let fixed: [Int: Pattern]
 
         init?(listPatterns: [String: String]) {
 
-            var _start: String? = nil
-            var _middle: String? = nil
-            var _end: String? = nil
-            var fixed: [Int: String] = [:]
+            var _start: Pattern? = nil
+            var _middle: Pattern? = nil
+            var _end: Pattern? = nil
+            var fixed: [Int: Pattern] = [:]
 
             for (key, value) in listPatterns {
                 if let number = Int(key), number > 0 {
-                    fixed[number] = value
+                    fixed[number] = Pattern(base: value)
                 } else if key == "start" {
-                    _start = value
+                    _start = Pattern(base: value)
                 } else if key == "middle" {
-                    _middle = value
+                    _middle = Pattern(base: value)
                 } else if key == "end" {
-                    _end = value
+                    _end = Pattern(base: value)
                 } else {
                     return nil
                 }
@@ -116,10 +116,60 @@ private extension ListItemFormatter.Style {
     }
 }
 
-private extension String {
+extension Format.Patterns {
+    struct Pattern: ExpressibleByStringLiteral {
+        enum Token: Equatable {
+            case text(Substring)
+            case placeholder(Int)
 
-    func argCount() -> Int {
-        let regex = try? NSRegularExpression(pattern: "\\{[0-9]+\\}", options: [])
-        return regex?.numberOfMatches(in: self, options: [], range: NSRange(startIndex ..< endIndex, in: self)) ?? 0
+            var isPlaceholder: Bool {
+                guard case .placeholder = self else { return false }
+                return true
+            }
+        }
+
+        let base: String
+        let tokens: [Token]
+
+        init(stringLiteral value: StringLiteralType) {
+            self.init(base: value)
+        }
+
+        init(base: String) {
+            var tokens: [Token] = []
+
+            let regex = try! NSRegularExpression(pattern: "\\{([0-9]+)\\}")
+            var startIndex = base.startIndex
+            regex.enumerateMatches(in: base, range: NSRange(base.startIndex ..< base.endIndex, in: base)) { result, _, _ in
+                let result = result!
+                let placeholderRange = Range(result.range(at: 0), in: base)!
+
+                // Up until this point, it's text
+                let leadingTextRange = startIndex ..< placeholderRange.lowerBound
+                tokens.append(.text(base[leadingTextRange]))
+
+                // Track the placeholder
+                let indexRange = Range(result.range(at: 1), in: base)!
+                let index = Int(base[indexRange])!
+                tokens.append(.placeholder(index))
+
+                // Move on
+                startIndex = placeholderRange.upperBound
+            }
+
+            // Close up
+            if startIndex < base.endIndex {
+                let range = startIndex ..< base.endIndex
+                tokens.append(.text(base[range]))
+            }
+
+            // Hold
+            self.base = base
+            self.tokens = tokens
+        }
+
+        func argCount() -> Int {
+            tokens.filter(\.isPlaceholder).count
+        }
     }
 }
