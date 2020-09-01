@@ -2,12 +2,13 @@ name: CI
 
 on:
   pull_request:
-    branches: [ master ]
+    branches: [ '*' ]
 
 jobs:
-  unit_tests:
-    name: Unit Tests (Xcode ${{ matrix.xcode_version }})
+  checks:
+    name: Checks (Xcode ${{ matrix.xcode_version }})
     runs-on: macos-latest
+
     strategy:
       matrix:
         xcode_version: ['10.3', '11.6', '12_beta']
@@ -24,44 +25,37 @@ jobs:
           destination_ios: 'OS=14.0,name=iPhone 11 Pro'
           destination_macos: 'platform=macOS'
           destination_tvos: 'OS=14.0,name=Apple TV'
+
     env:
       DEVELOPER_DIR: '/Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer'
+
     steps:
+    # Checkout the Git repo
     - name: Checkout Repo
       uses: actions/checkout@v2
+
+    # Setup Ruby and Bundler
     - name: Setup Ruby
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
+
+    # Run Unit Tests (iOS)
     - name: Run Tests - iOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination_ios }}" clean test | bundle exec xcpretty
+
+    # Run Unit Tests (macOS)
     - name: Run Tests - macOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter macOS" -destination "${{ matrix.destination_macos }}" clean test | bundle exec xcpretty
+
+    # Run Unit Tests (tvOS)
     - name: Run Tests - tvOS
       run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter tvOS" -destination "${{ matrix.destination_tvos }}" clean test | bundle exec xcpretty
 
-  check_carthage:
-    name: Check Carthage
-    runs-on: macos-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
+    # Verify Carthage
     - name: Carthage Build
       run: carthage build --platform all --no-skip-current
 
-  check_cocoapods:
-    name: Check CocoaPods
-    runs-on: macos-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-    - name: Setup Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        bundler-cache: true
+    # Verify CocoaPods
     - name: Pod Spec Lint
       run: bundle exec pod spec lint
