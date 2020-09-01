@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		532D2F3F24FE8D2100883801 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D2F3B24FE8CA700883801 /* PerformanceTests.swift */; };
+		532D2F4324FE99A700883801 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D2F4224FE99A700883801 /* Pattern.swift */; };
+		532D2F4424FE9A6B00883801 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D2F4224FE99A700883801 /* Pattern.swift */; };
+		532D2F4524FE9A6C00883801 /* Pattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D2F4224FE99A700883801 /* Pattern.swift */; };
 		533286012254EDE400140D57 /* ListItemFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533285F82254EDE400140D57 /* ListItemFormatter.framework */; };
 		5332860F2254EEB500140D57 /* ListItemFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F36130222E656500D93A5D /* ListItemFormatterTests.swift */; };
 		533286102254EEB500140D57 /* FormatProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EA2233E73A00403C74 /* FormatProviderTests.swift */; };
@@ -93,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		532D2F3B24FE8CA700883801 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
+		532D2F4224FE99A700883801 /* Pattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pattern.swift; sourceTree = "<group>"; };
 		533285F82254EDE400140D57 /* ListItemFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListItemFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		533286002254EDE400140D57 /* ListItemFormatterTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ListItemFormatterTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		534C99C92234940900B951D4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			children = (
 				539CE7DD2231C56300403C74 /* LocaleInformation.swift */,
 				534C99D322358F5600B951D4 /* Format.swift */,
+				532D2F4224FE99A700883801 /* Pattern.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -520,6 +525,7 @@
 				5332861E2254EED300140D57 /* Format.swift in Sources */,
 				533286202254EED300140D57 /* String+ListItemFormatter.swift in Sources */,
 				5332861C2254EED300140D57 /* ListPatternBuilder.swift in Sources */,
+				532D2F4524FE9A6C00883801 /* Pattern.swift in Sources */,
 				5332861B2254EED300140D57 /* FormatProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -548,6 +554,7 @@
 				534C99F5223591F800B951D4 /* Format.swift in Sources */,
 				534C99F7223591F800B951D4 /* String+ListItemFormatter.swift in Sources */,
 				534C99F3223591F800B951D4 /* ListPatternBuilder.swift in Sources */,
+				532D2F4424FE9A6B00883801 /* Pattern.swift in Sources */,
 				534C99F2223591F800B951D4 /* FormatProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -577,6 +584,7 @@
 				539CE7E02231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				539CE7DE2231C56300403C74 /* LocaleInformation.swift in Sources */,
 				539CE7F622342CD500403C74 /* String+ListItemFormatter.swift in Sources */,
+				532D2F4324FE99A700883801 /* Pattern.swift in Sources */,
 				53F3613D222E657100D93A5D /* ListItemFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

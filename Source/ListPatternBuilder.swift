@@ -57,7 +57,7 @@ class ListPatternBuilder {
         return listByUsingStartMiddleAndEndFormat(between: items)
     }
 
-    private func listByUsing(fixedFormat format: Format.Patterns.Pattern, for items: [String]) -> List {
+    private func listByUsing(fixedFormat format: Pattern, for items: [String]) -> List {
 
         var ranges: [Range<String.Index>] = []
         return List(string: String(format: format.base, ranges: &ranges, arguments: items),
