@@ -61,9 +61,9 @@ struct Format: Decodable {
             }
 
             guard let start = _start, let middle = _middle, let end = _end else { return nil }
-            guard start.argCount() == 2, middle.argCount() == 2, end.argCount() == 2 else { return nil }
+            guard start.placeholderCount == 2, middle.placeholderCount == 2, end.placeholderCount == 2 else { return nil }
             for (count, string) in fixed {
-                guard string.argCount() == count else { return nil }
+                guard string.placeholderCount == count else { return nil }
             }
 
             self.start = start

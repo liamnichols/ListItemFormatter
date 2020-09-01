@@ -35,6 +35,7 @@ struct Pattern: ExpressibleByStringLiteral {
 
     let base: String
     let tokens: [Token]
+    let placeholderCount: Int
 
     init(stringLiteral value: StringLiteralType) {
         self.init(base: value)
@@ -42,6 +43,7 @@ struct Pattern: ExpressibleByStringLiteral {
 
     init(base: String) {
         var tokens: [Token] = []
+        var placeholderCount = 0
 
         let regex = try! NSRegularExpression(pattern: "\\{([0-9]+)\\}")
         var startIndex = base.startIndex
@@ -57,6 +59,7 @@ struct Pattern: ExpressibleByStringLiteral {
             let indexRange = Range(result.range(at: 1), in: base)!
             let index = Int(base[indexRange])!
             tokens.append(.placeholder(index))
+            placeholderCount += 1
 
             // Move on
             startIndex = placeholderRange.upperBound
@@ -71,9 +74,6 @@ struct Pattern: ExpressibleByStringLiteral {
         // Hold
         self.base = base
         self.tokens = tokens
-    }
-
-    func argCount() -> Int {
-        tokens.filter(\.isPlaceholder).count
+        self.placeholderCount = placeholderCount
     }
 }
