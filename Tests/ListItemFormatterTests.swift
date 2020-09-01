@@ -94,7 +94,7 @@ class ListItemFormatterTests: XCTestCase {
         let formatter = ListItemFormatter()
 
         formatter.locale = Locale(identifier: "ar_LB")
-        XCTAssertEqual(formatter.string(from: ["ليام", "ليندا", "كوكباد"]), "ليام، ليندا، وكوكباد")
+        XCTAssertEqual(formatter.string(from: ["ليام", "ليندا", "كوكباد"]), "ليام وليندا وكوكباد")
 
         formatter.locale = Locale(identifier: "fr_LB")
         XCTAssertEqual(formatter.string(from: ["Liam", "Thomas", "Cookpad"]), "Liam, Thomas et Cookpad")
