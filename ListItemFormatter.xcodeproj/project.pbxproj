@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		532D2F3F24FE8D2100883801 /* PerformanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 532D2F3B24FE8CA700883801 /* PerformanceTests.swift */; };
 		533286012254EDE400140D57 /* ListItemFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 533285F82254EDE400140D57 /* ListItemFormatter.framework */; };
 		5332860F2254EEB500140D57 /* ListItemFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53F36130222E656500D93A5D /* ListItemFormatterTests.swift */; };
 		533286102254EEB500140D57 /* FormatProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7EA2233E73A00403C74 /* FormatProviderTests.swift */; };
@@ -91,6 +92,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		532D2F3B24FE8CA700883801 /* PerformanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerformanceTests.swift; sourceTree = "<group>"; };
 		533285F82254EDE400140D57 /* ListItemFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListItemFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		533286002254EDE400140D57 /* ListItemFormatterTests tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ListItemFormatterTests tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		534C99C92234940900B951D4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		53F3612F222E656500D93A5D /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				532D2F3B24FE8CA700883801 /* PerformanceTests.swift */,
 				53F36130222E656500D93A5D /* ListItemFormatterTests.swift */,
 				539CE7EA2233E73A00403C74 /* FormatProviderTests.swift */,
 				539CE7EE2233FE4700403C74 /* FormatTests.swift */,
@@ -559,6 +562,7 @@
 				534C99FD2235924A00B951D4 /* LocalInformationTests.swift in Sources */,
 				534C99FA2235924A00B951D4 /* ListItemFormatterTests.swift in Sources */,
 				534C99FB2235924A00B951D4 /* FormatProviderTests.swift in Sources */,
+				532D2F3F24FE8D2100883801 /* PerformanceTests.swift in Sources */,
 				534C9A002235924A00B951D4 /* LNListPatternFormatterObjcInterfaceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
