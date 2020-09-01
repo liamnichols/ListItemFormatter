@@ -80,37 +80,30 @@ class ListPatternBuilder {
     }
 
     private func listByUsingStartMiddleAndEndFormat(between items: [String]) -> List {
-
         var items = items
-        var string = items.removeLast()
-        var itemRanges = [string.startIndex ..< string.endIndex]
-        var remainingItems = items
-        var nextFormat = patterns.end
+        var components = [OutputComponent(string: items.removeLast(), isItem: true)]
+        var pattern = patterns.end
 
-        while !remainingItems.isEmpty {
+        while let nextItem = items.popLast() {
+            // Ensure the next pattern is correctly picked
+            defer { pattern = items.count == 1 ? patterns.start : patterns.middle }
 
-            let nextItem = remainingItems.removeLast()
-            var ranges: [Range<String.Index>] = []
-            let formatted = String(format: nextFormat.base, ranges: &ranges, nextItem, string)
-
-            let itemRange = ranges.first(where: { formatted[$0] == nextItem })!
-            let stringRange = ranges.first(where: { formatted[$0] == string })!
-
-            let baseIndex = stringRange.lowerBound.samePosition(in: formatted.unicodeScalars)!
-            itemRanges = itemRanges.map {
-                let startIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.lowerBound))
-                let endIndex = formatted.unicodeScalars.index(baseIndex, offsetBy: string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: $0.upperBound))
-                return startIndex ..< endIndex
+            // Convert the tokens into a new array of output components
+            components = pattern.tokens.reduce(into: [OutputComponent]()) { result, token in
+                switch token {
+                case .text(let value):
+                    result.append(OutputComponent(string: String(value), isItem: false))
+                case .placeholder(0):
+                    result.append(OutputComponent(string: nextItem, isItem: true))
+                case .placeholder(1):
+                    result.append(contentsOf: components)
+                case .placeholder:
+                    fatalError("start/middle/end patterns must only contain 2 placeholders")
+                }
             }
-
-            string = formatted
-            itemRanges.insert(itemRange, at: 0)
-            nextFormat = remainingItems.count == 1 ? patterns.start : patterns.middle
         }
 
-        return List(string: string,
-                    items: items,
-                    itemRanges: itemRanges)
+        return List(components: components, items: items)
     }
 }
 
