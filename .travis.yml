@@ -1,5 +1,0 @@
-osx_image: xcode10.2
-language: swift
-script:
-  - sudo mkdir '/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 9.3.simruntime/Contents/Resources/RuntimeRoot/usr/lib/swift'
-  - bundle exec fastlane test
