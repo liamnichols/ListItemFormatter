@@ -6,20 +6,23 @@ on:
 
 jobs:
   ios_unit_tests:
-    name: iOS Unit Tests
+    name: Unit Tests (Xcode ${{ matrix.xcode_version }})
     runs-on: macos-latest
     strategy:
       matrix:
         xcode_version: ['10.3.1', '11.6', '12_beta']
         include:
         - xcode_version: '10.3.1'
-          destination: 'OS=12.4,name=iPhone SE'
+          destination_ios: 'OS=12.4,name=iPhone SE'
+          destination_macos: 'platform=OS X'
         - xcode_version: '11.6'
-          destination: 'OS=13.6,name=iPhone 11 Pro'
+          destination_ios: 'OS=13.6,name=iPhone 11 Pro'
+          destination_macos: 'platform=macOS'
         - xcode_version: '12_beta'
-          destination: 'OS=14.0,name=iPhone 11 Pro'
+          destination_ios: 'OS=14.0,name=iPhone 11 Pro'
+          destination_macos: 'platform=macOS'
     env:
-      DEVELOPER_DIR: /Applications/Xcode_{{ matrix.xcode_version }}.app/Contents/Developer
+      DEVELOPER_DIR: '/Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer'
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v2
@@ -27,5 +30,7 @@ jobs:
       uses: ruby/setup-ruby@v1
       with:
         bundler-cache: true
-    - name: Test
-      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination }}" clean test
+    - name: Run Tests - iOS
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter iOS" -destination "${{ matrix.destination_ios }}" clean test
+    - name: Run Tests - macOS
+      run: set -o pipefail && env NSUnbufferedIO=YES xcodebuild -scheme "ListItemFormatter macOS" -destination "${{ matrix.destination_macos }}" clean test
