@@ -26,12 +26,12 @@ import XCTest
 class ListPatternBuilderTests: XCTestCase {
 
     let patterns = Format.Patterns(listPatterns: [
-        "2": "%1$@ [2] %2$@",
-        "6": "%6$@ %5$@ %4$@ %3$@ %2$@ %1$@",
-        "7": "%@ %@ %@ %@ %@ %@ %@",
-        "start": "%1$@ [START] %2$@",
-        "middle": "%1$@ [MIDDLE] %2$@",
-        "end": "%1$@ [END] %2$@"
+        "2": "{0} [2] {1}",
+        "6": "{5} {4} {3} {2} {1} {0}",
+        "7": "{0} {1} {2} {3} {4} {5} {6}",
+        "start": "{0} [START] {1}",
+        "middle": "{0} [MIDDLE] {1}",
+        "end": "{0} [END] {1}"
     ])!
 
     func testNoItemsItems() {
@@ -88,5 +88,22 @@ class ListPatternBuilderTests: XCTestCase {
         let result = builder.build(from: ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN"])
         XCTAssertEqual(result.string, "ONE TWO THREE FOUR FIVE SIX SEVEN")
         XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN"])
+    }
+
+    func testFormatArgumentWithUnicodeWeirdness() {
+
+        let builder = ListPatternBuilder(patterns: patterns)
+        let result = builder.build(from: ["👍🏽", "👍", "👍👎🏼", "👍👍🏽👍"])
+        XCTAssertEqual(result.string, "👍🏽 [START] 👍 [MIDDLE] 👍👎🏼 [END] 👍👍🏽👍")
+        XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["👍🏽", "👍", "👍👎🏼", "👍👍🏽👍"])
+    }
+
+    func testWithCombiningCharacters() {
+        // https://en.wikipedia.org/wiki/Combining_character
+
+        let builder = ListPatternBuilder(patterns: patterns)
+        let result = builder.build(from: ["A", "B", "َC", "َD"])
+        XCTAssertEqual(result.string, "A [START] B [MIDDLE] َC [END] َD")
+        XCTAssertEqual(result.itemRanges.map { result.string[$0] }, ["A", "B", "َC", "َD"])
     }
 }

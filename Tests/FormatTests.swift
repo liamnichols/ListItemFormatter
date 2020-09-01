@@ -33,38 +33,31 @@ class FormatTests: XCTestCase {
     func testPatternArgumentCounts() {
 
         XCTAssertNotNil(Format.Patterns(listPatterns: [
-            "2": "%@ and %@",
-            "3": "%@ and %@ and %@",
-            "start": "%@, %@",
-            "middle": "%@, %@",
-            "end": "%1$@ and %2$@"
+            "2": "{0} and {1}",
+            "3": "{0} and {1} and {2}",
+            "start": "{0}, {1}",
+            "middle": "{0}, {1}",
+            "end": "{0} and {1}"
         ]))
 
         XCTAssertNil(Format.Patterns(listPatterns: [
-            "3": "%@",
-            "start": "%@, %@",
-            "middle": "%@, %@",
-            "end": "%@ and %@"
+            "3": "{0}",
+            "start": "{0}, {1}",
+            "middle": "{0}, {1}",
+            "end": "{0} and {1}"
         ]))
 
         XCTAssertNil(Format.Patterns(listPatterns: [
-            "3": "%@ and %@ and %@",
-            "start": "%@",
-            "middle": "%@, %@",
-            "end": "%@ and %@"
+            "3": "{0} and {1} and {2}",
+            "start": "{0}",
+            "middle": "{0}, {1}",
+            "end": "{0} and {1}"
         ]))
 
         XCTAssertNil(Format.Patterns(listPatterns: [
-            "3": "%@ and %@ and %@",
-            "start": "%@, %@",
-            "middle": "%@, %d",
-            "end": "%@ and %@"
-        ]))
-
-        XCTAssertNil(Format.Patterns(listPatterns: [
-            "3": "%@ and %@ and %@",
-            "start": "%@, %@",
-            "middle": "%@, %@",
+            "3": "{0} and {1} and {2}",
+            "start": "{0}, {1}",
+            "middle": "{0}, {1}",
             "end": ""
         ]))
     }

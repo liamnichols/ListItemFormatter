@@ -119,7 +119,7 @@ private extension ListItemFormatter.Style {
 private extension String {
 
     func argCount() -> Int {
-        let regex = try? NSRegularExpression(pattern: "%([0-9]+\\$)?@", options: [])
+        let regex = try? NSRegularExpression(pattern: "\\{[0-9]+\\}", options: [])
         return regex?.numberOfMatches(in: self, options: [], range: NSRange(startIndex ..< endIndex, in: self)) ?? 0
     }
 }
