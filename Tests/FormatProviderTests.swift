@@ -28,8 +28,8 @@ class FormatProviderTests: XCTestCase {
     func testLoadingFormat() {
 
         let provider = FormatProvider()
-        let format = provider.format(for: Locale(identifier: "en_GB"))
-        XCTAssertEqual(format?.localeIdentifier, "en_GB")
+        let format = provider.format(for: Locale(identifier: "en_CA"))
+        XCTAssertEqual(format?.localeIdentifier, "en_CA")
     }
 
     func testInvalidLocaleReturnsRoot() {
