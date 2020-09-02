@@ -3,7 +3,7 @@
 source "https://rubygems.org"
 
 gem 'fastlane'
-gem 'cocoapods', '1.6.1'
+gem 'cocoapods'
 gem 'jazzy'
 
 # For import_cldr_data.rb
