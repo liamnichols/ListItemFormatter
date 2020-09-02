@@ -54,6 +54,7 @@ jobs:
 
     # Verify Carthage
     - name: Carthage Build
+      if: ${{ matrix.xcode_version != '12_beta' }} # https://github.com/Carthage/Carthage/issues/3019
       run: carthage build --platform all --no-skip-current
 
     # Verify CocoaPods
