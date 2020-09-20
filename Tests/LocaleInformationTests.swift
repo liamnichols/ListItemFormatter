@@ -23,7 +23,7 @@
 import XCTest
 @testable import ListItemFormatter
 
-class LocalInformationTests: XCTestCase {
+class LocaleInformationTests: XCTestCase {
 
     let localeInformation = LocaleInformation(
         localeIdentifiers: [],
