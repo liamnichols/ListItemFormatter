@@ -92,3 +92,19 @@ github "liamnichols/ListItemFormatter"
 ```
 
 Follow the [instructions](https://github.com/Carthage/Carthage#quick-start) to add ListItemFormatter.framework to your project.
+
+### CocoaPods
+
+You want to add `pod 'ListItemFormatter', '~> 0.1'` similar to the following to your Podfile:
+
+```ruby
+target 'MyApp' do
+  pod 'ListItemFormatter', '~> 0.1'
+end
+```
+
+Then run `pod install` inside your terminal, or from CocoaPods.app. Alternatively to give it a test run, run the following command:
+
+```sh
+pod try ListItemFormatter
+```
