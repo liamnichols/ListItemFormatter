@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/liamnichols/ListItemFormatter.svg?branch=master)](https://travis-ci.org/liamnichols/ListItemFormatter)
 
-`ListItemFormatter` is an `NSFormatter` subclass that supports formatting list items to the [Unicode CLDR specification](https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns).
+`ListItemFormatter` is an `NSFormatter` subclass that supports formatting list items to the [Unicode CLDR specification](https://www.unicode.org/reports/tr35/tr35-general.html#ListPatterns).
 
 ## Usage
 
@@ -36,7 +36,7 @@ formatter.string(from: ["5 feet", "6 inch"]) // "5 feet, 6 inch"
 
 ### Localisation
 
-The formatter is backed by an export of the Unicode CLDR data (version 35) and just like any other standard `NSFormatter` you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.
+The formatter is backed by an export of the Unicode CLDR data (version 36) and just like any other standard `NSFormatter` you can simply set the `locale` property to take advantage of over 200 languages and regional formats configurations provided.
 
 ```swift
 let formatter = ListItemFormatter()
