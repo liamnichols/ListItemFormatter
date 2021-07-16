@@ -20,7 +20,7 @@
     <header class="header">
       <p class="header-col header-col--primary">
         <a class="header-link" href="index.html">
-          ListItemFormatter 0.1.0 Docs
+          ListItemFormatter 0.2.0 Docs
         </a>
          (72% documented)
       </p>
@@ -74,7 +74,7 @@
 
 <p><a href="https://travis-ci.org/liamnichols/ListItemFormatter"><img src="https://travis-ci.org/liamnichols/ListItemFormatter.svg?branch=master" alt="Build Status"></a></p>
 
-<p><code><a href="Classes/ListItemFormatter.html">ListItemFormatter</a></code> is an <code>NSFormatter</code> subclass that supports formatting list items to the <a href="https://www.unicode.org/reports/tr35/tr35-53/tr35-general.html#ListPatterns">Unicode CLDR specification</a>.</p>
+<p><code><a href="Classes/ListItemFormatter.html">ListItemFormatter</a></code> is an <code>NSFormatter</code> subclass that supports formatting list items to the <a href="https://www.unicode.org/reports/tr35/tr35-general.html#ListPatterns">Unicode CLDR specification</a>.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 <h3 id='basic-formatting' class='heading'>Basic Formatting</h3>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
@@ -100,7 +100,7 @@
 </code></pre>
 <h3 id='localisation' class='heading'>Localisation</h3>
 
-<p>The formatter is backed by an export of the Unicode CLDR data (version 35) and just like any other standard <code>NSFormatter</code> you can simply set the <code>locale</code> property to take advantage of over 200 languages and regional formats configurations provided.</p>
+<p>The formatter is backed by an export of the Unicode CLDR data (version 36) and just like any other standard <code>NSFormatter</code> you can simply set the <code>locale</code> property to take advantage of over 200 languages and regional formats configurations provided.</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">formatter</span> <span class="o">=</span> <span class="kt">ListItemFormatter</span><span class="p">()</span>
 <span class="n">formatter</span><span class="o">.</span><span class="n">locale</span> <span class="o">=</span> <span class="kt">Locale</span><span class="p">(</span><span class="nv">identifier</span><span class="p">:</span> <span class="s">"ar_LB"</span><span class="p">)</span>
 <span class="n">formatter</span><span class="o">.</span><span class="nf">string</span><span class="p">(</span><span class="nv">from</span><span class="p">:</span> <span class="p">[</span><span class="s">"ليام"</span><span class="p">,</span> <span class="s">"ليندا"</span><span class="p">,</span> <span class="s">"كوكباد"</span><span class="p">])</span>
@@ -110,7 +110,7 @@
 <p>Here is the complete list of supported language, region, and script code variants:</p>
 
 <blockquote>
-<p>Afrikaans, Aghem, Akan, Albanian, Amharic, Arabic, Armenian, Assamese, Asturian, Asu, Azerbaijani, Bafia, Bambara, Bangla, Basaa, Basque, Belarusian, Bemba, Bena, Bodo, Bosnian, Bosnian (Cyrillic), Breton, Bulgarian, Burmese, Cantonese, Cantonese (Simplified Han), Catalan, Catalan (Spain), Central Atlas Tamazight, Central Kurdish, Chakma, Chechen, Cherokee, Chiga, Chinese, Chinese (Hong Kong (China)), Chinese (Traditional Han), Church Slavic, Colognian, Cornish, Croatian, Czech, Danish, Duala, Dutch, Dzongkha, Embu, English, English (Australia), English (United Kingdom), English (United States), Esperanto, Estonian, Ewe, Ewondo, Faroese, Filipino, Finnish, French, Friulian, Fulah, Galician, Ganda, Georgian, German, Greek, Gujarati, Gusii, Hausa, Hawaiian, Hebrew, Hindi, Hungarian, Icelandic, Igbo, Inari Sami, Indonesian, Interlingua, Irish, Italian, Japanese, Javanese, Jola-Fonyi, Kabuverdianu, Kabyle, Kako, Kalaallisut, Kalenjin, Kamba, Kannada, Kashmiri, Kazakh, Khmer, Kikuyu, Kinyarwanda, Konkani, Korean, Koyra Chiini, Koyraboro Senni, Kurdish, Kwasio, Kyrgyz, Lakota, Langi, Lao, Latvian, Lingala, Lithuanian, Low German, Lower Sorbian, Luba-Katanga, Luo, Luxembourgish, Luyia, Macedonian, Machame, Makhuwa-Meetto, Makonde, Malagasy, Malay, Malayalam, Maltese, Manx, Maori, Marathi, Masai, Mazanderani, Meru, Metaʼ, Mongolian, Morisyen, Mundang, Nama, Nepali, Ngiemboon, Ngomba, North Ndebele, Northern Luri, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, Nuer, Nyankole, Odia, Oromo, Ossetic, Pashto, Persian, Polish, Portuguese, Prussian, Punjabi, Quechua, Romanian, Romansh, Rombo, Rundi, Russian, Rwa, Sakha, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Serbian, Serbian (Latin), Shambala, Shona, Sichuan Yi, Sindhi, Sinhala, Slovak, Slovenian, Soga, Somali, Spanish, Spanish (Dominican Republic), Spanish (Paraguay), Standard Moroccan Tamazight, Swahili, Swedish, Swiss German, Tachelhit, Taita, Tajik, Tamil, Tasawaq, Tatar, Telugu, Teso, Thai, Tibetan, Tigrinya, Tongan, Turkish, Turkmen, Ukrainian, Upper Sorbian, Urdu, Urdu (India), Uyghur, Uzbek, Vai, Vietnamese, Volapük, Vunjo, Walser, Welsh, Western Frisian, Wolof, Xhosa, Yangben, Yiddish, Yoruba, Zarma, Zulu</p>
+<p>Afrikaans, Aghem, Akan, Albanian, Amharic, Arabic, Armenian, Assamese, Asturian, Asu, Azerbaijani, Bafia, Bambara, Bangla, Basaa, Basque, Belarusian, Bemba, Bena, Bodo, Bosnian, Bosnian (Cyrillic), Breton, Bulgarian, Burmese, Cantonese, Cantonese (Simplified Han), Catalan, Catalan (Spain), Cebuano, Central Atlas Tamazight, Chakma, Chechen, Cherokee, Chiga, Chinese, Chinese (Hong Kong), Chinese (Traditional Han), Church Slavic, Colognian, Cornish, Croatian, Czech, Danish, Duala, Dutch, Dzongkha, Embu, English, English (Canada), English (India), English (United States), English (World), Esperanto, Estonian, Ewe, Ewondo, Faroese, Filipino, Finnish, French, Friulian, Fulah, Galician, Ganda, Georgian, German, Greek, Gujarati, Gusii, Hausa, Hawaiian, Hebrew, Hindi, Hungarian, Icelandic, Igbo, Inari Sami, Indonesian, Interlingua, Irish, Italian, Japanese, Javanese, Jola-Fonyi, Kabuverdianu, Kabyle, Kako, Kalaallisut, Kalenjin, Kamba, Kannada, Kashmiri, Kazakh, Khmer, Kikuyu, Kinyarwanda, Konkani, Korean, Koyra Chiini, Koyraboro Senni, Kurdish, Kurdish, Sorani, Kwasio, Kyrgyz, Lakota, Langi, Lao, Latvian, Lingala, Lithuanian, Low German, Lower Sorbian, Luba-Katanga, Luo, Luxembourgish, Luyia, Macedonian, Machame, Makhuwa-Meetto, Makonde, Malagasy, Malay, Malayalam, Maltese, Manx, Maori, Marathi, Masai, Mazanderani, Meru, Metaʼ, Mongolian, Morisyen, Mundang, Nama, Nepali, Ngiemboon, Ngomba, North Ndebele, Northern Luri, Northern Sami, Norwegian Bokmål, Norwegian Nynorsk, Nuer, Nyankole, Odia, Oromo, Ossetic, Pashto, Persian, Polish, Portuguese, Portuguese (Portugal), Prussian, Punjabi, Quechua, Romanian, Romansh, Rombo, Root, Rundi, Russian, Rwa, Sakha, Samburu, Sango, Sangu, Scottish Gaelic, Sena, Serbian, Serbian (Latin), Shambala, Shona, Sichuan Yi, Sindhi, Sinhala, Slovak, Slovenian, Soga, Somali, Spanish, Spanish (Dominican Republic), Spanish (Paraguay), Standard Moroccan Tamazight, Swahili, Swedish, Swiss German, Tachelhit, Taita, Tajik, Tamil, Tasawaq, Tatar, Telugu, Teso, Thai, Tibetan, Tigrinya, Tongan, Turkish, Turkmen, Ukrainian, Upper Sorbian, Urdu, Urdu (India), Uyghur, Uzbek, Vai, Vietnamese, Volapük, Vunjo, Walser, Welsh, Western Frisian, Wolof, Xhosa, Yangben, Yiddish, Yoruba, Zarma, Zulu</p>
 </blockquote>
 <h3 id='attributed-strings' class='heading'>Attributed Strings</h3>
 
@@ -149,6 +149,17 @@
 </code></pre>
 
 <p>Follow the <a href="https://github.com/Carthage/Carthage#quick-start">instructions</a> to add ListItemFormatter.framework to your project.</p>
+<h3 id='cocoapods' class='heading'>CocoaPods</h3>
+
+<p>You want to add <code>pod &#39;ListItemFormatter&#39;, &#39;~&gt; 0.1&#39;</code> similar to the following to your Podfile:</p>
+<pre class="highlight ruby"><code><span class="n">target</span> <span class="s1">'MyApp'</span> <span class="k">do</span>
+  <span class="n">pod</span> <span class="s1">'ListItemFormatter'</span><span class="p">,</span> <span class="s1">'~&gt; 0.1'</span>
+<span class="k">end</span>
+</code></pre>
+
+<p>Then run <code>pod install</code> inside your terminal, or from CocoaPods.app. Alternatively to give it a test run, run the following command:</p>
+<pre class="highlight shell"><code>pod try ListItemFormatter
+</code></pre>
 
           </div>
         </section>
@@ -157,8 +168,8 @@
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2020 <a class="link" href="https://github.com/liamnichols" target="_blank" rel="external">Liam Nichols</a>. All rights reserved. (Last updated: 2020-09-02)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2021 <a class="link" href="https://github.com/liamnichols" target="_blank" rel="external">Liam Nichols</a>. All rights reserved. (Last updated: 2021-07-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.7</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
