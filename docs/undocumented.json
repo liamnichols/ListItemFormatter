@@ -1,47 +1,47 @@
 {
   "warnings": [
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 132,
       "symbol": "ListItemFormatter.init()",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 150,
       "symbol": "ListItemFormatter.supportsSecureCoding",
       "symbol_kind": "source.lang.swift.decl.var.static",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 152,
       "symbol": "ListItemFormatter.init(coder:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 166,
       "symbol": "ListItemFormatter.encode(with:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 176,
       "symbol": "ListItemFormatter.string(for:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     },
     {
-      "file": "/Users/liamnichols/Code/GitHub/ListItemFormatter/Source/ListItemFormatter.swift",
+      "file": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter/Source/ListItemFormatter.swift",
       "line": 182,
       "symbol": "ListItemFormatter.attributedString(for:withDefaultAttributes:)",
       "symbol_kind": "source.lang.swift.decl.function.method.instance",
       "warning": "undocumented"
     }
   ],
-  "source_directory": "/Users/liamnichols/Code/GitHub/ListItemFormatter"
+  "source_directory": "/Users/liamnichols/Code/GitHub/liamnichols/ListItemFormatter"
 }
