@@ -48,6 +48,9 @@
 		534C9A002235924A00B951D4 /* LNListPatternFormatterObjcInterfaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7E82232B60000403C74 /* LNListPatternFormatterObjcInterfaceTests.m */; };
 		534C9A012235924A00B951D4 /* ArchivedFormatter_Invalid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CA22357AB900B951D4 /* ArchivedFormatter_Invalid.plist */; };
 		534C9A022235924A00B951D4 /* ArchivedFormatter_Valid.plist in Resources */ = {isa = PBXBuildFile; fileRef = 534C99CB22357ABA00B951D4 /* ArchivedFormatter_Valid.plist */; };
+		5397036326A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5397036226A1CD1200D1F6C3 /* Bundle+Resources.swift */; };
+		5397036426A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5397036226A1CD1200D1F6C3 /* Bundle+Resources.swift */; };
+		5397036526A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5397036226A1CD1200D1F6C3 /* Bundle+Resources.swift */; };
 		539CE7D72231BE0000403C74 /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 539CE7D62231BE0000403C74 /* Resources.xcassets */; };
 		539CE7DA2231C23B00403C74 /* FormatProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7D92231C23B00403C74 /* FormatProvider.swift */; };
 		539CE7DE2231C56300403C74 /* LocaleInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539CE7DD2231C56300403C74 /* LocaleInformation.swift */; };
@@ -100,6 +103,7 @@
 		534C99D322358F5600B951D4 /* Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
 		534C99DA223590F600B951D4 /* ListItemFormatter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ListItemFormatter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		534C99E2223590F600B951D4 /* ListItemFormatterTests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ListItemFormatterTests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5397036226A1CD1200D1F6C3 /* Bundle+Resources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Resources.swift"; sourceTree = "<group>"; };
 		539CE7D62231BE0000403C74 /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
 		539CE7D92231C23B00403C74 /* FormatProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatProvider.swift; sourceTree = "<group>"; };
 		539CE7DD2231C56300403C74 /* LocaleInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocaleInformation.swift; sourceTree = "<group>"; };
@@ -181,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				539CE7DF2231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift */,
+				5397036226A1CD1200D1F6C3 /* Bundle+Resources.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -510,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5332861D2254EED300140D57 /* LocaleInformation.swift in Sources */,
+				5397036526A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */,
 				5332861F2254EED300140D57 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				5332861A2254EED300140D57 /* ListItemFormatter.swift in Sources */,
 				5332861E2254EED300140D57 /* Format.swift in Sources */,
@@ -537,6 +543,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				534C99F4223591F800B951D4 /* LocaleInformation.swift in Sources */,
+				5397036426A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */,
 				534C99F6223591F800B951D4 /* NSDataAsset+ListItemFormatter.swift in Sources */,
 				534C99F1223591F800B951D4 /* ListItemFormatter.swift in Sources */,
 				534C99F5223591F800B951D4 /* Format.swift in Sources */,
@@ -565,6 +572,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				539CE7DA2231C23B00403C74 /* FormatProvider.swift in Sources */,
+				5397036326A1CD1200D1F6C3 /* Bundle+Resources.swift in Sources */,
 				539CE7E42232657D00403C74 /* ListPatternBuilder.swift in Sources */,
 				534C99D422358F5600B951D4 /* Format.swift in Sources */,
 				539CE7E02231C5E600403C74 /* NSDataAsset+ListItemFormatter.swift in Sources */,
