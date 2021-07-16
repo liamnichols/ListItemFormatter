@@ -31,7 +31,7 @@ lane :update_version do |options|
 
   push_to_git_remote
 
-  carthage(command: "build", platform: "all", no_skip_current: true)
+  carthage(command: "build", platform: "all", no_skip_current: true, use_xcframeworks: true)
   carthage(command: "archive", output: "ListItemFormatter.framework.zip")
 
   set_github_release(
