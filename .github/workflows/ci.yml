@@ -54,5 +54,5 @@ jobs:
       run: carthage build --platform all --no-skip-current
 
     # Verify CocoaPods
-    - name: Pod Spec Lint
-      run: bundle exec pod spec lint
+    - name: Verify CocoaPods
+      run: bundle exec pod lib lint
