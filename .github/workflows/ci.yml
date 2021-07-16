@@ -50,8 +50,8 @@ jobs:
 
     # Verify Carthage
     - name: Carthage Build
-      if: ${{ matrix.xcode_version != '12.4' }} # https://github.com/Carthage/Carthage/issues/3019
-      run: carthage build --platform all --no-skip-current
+      if: ${{ matrix.xcode_version != '11.6' }} # XCFrameworks on iOS 12+
+      run: carthage build --platform all --no-skip-current --use-xcframeworks
 
     # Verify CocoaPods
     - name: Verify CocoaPods
