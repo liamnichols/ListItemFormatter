@@ -17,10 +17,12 @@ jobs:
           destination_ios: 'OS=13.6,name=iPhone 11 Pro'
           destination_macos: 'platform=macOS'
           destination_tvos: 'OS=13.4,name=Apple TV'
+          carthage_xcframeworks_arg: ''
         - xcode_version: '12.4'
           destination_ios: 'OS=14.4,name=iPhone 11 Pro'
           destination_macos: 'platform=macOS'
           destination_tvos: 'OS=14.3,name=Apple TV'
+          carthage_xcframeworks_arg: '--use-xcframeworks'
 
     env:
       DEVELOPER_DIR: '/Applications/Xcode_${{ matrix.xcode_version }}.app/Contents/Developer'
@@ -50,8 +52,7 @@ jobs:
 
     # Verify Carthage
     - name: Carthage Build
-      if: ${{ matrix.xcode_version != '11.6' }} # XCFrameworks on iOS 12+
-      run: carthage build --platform all --no-skip-current --use-xcframeworks
+      run: carthage build --platform all --no-skip-current ${{ matrix.carthage_xcframeworks_arg }}
 
     # Verify CocoaPods
     - name: Verify CocoaPods
