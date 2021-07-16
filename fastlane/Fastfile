@@ -11,7 +11,7 @@ lane :update_version do |options|
   UI.user_error! "Version #{version_number} already exists" if git_tag_exists(tag: tag)
 
   ensure_git_status_clean
-  ensure_git_branch(branch: 'master')
+  ensure_git_branch(branch: 'main')
 
   UI.message "Incrementing build number"
   Dir.chdir("..") do
@@ -37,7 +37,7 @@ lane :update_version do |options|
   set_github_release(
     repository_name: "liamnichols/ListItemFormatter",
     name: release_name,
-    commitish: "master",
+    commitish: "main",
     tag_name: tag,
     description: get_changelog,
     upload_assets: ["ListItemFormatter.framework.zip"]
