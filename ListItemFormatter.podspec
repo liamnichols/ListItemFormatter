@@ -16,5 +16,10 @@ Pod::Spec.new do |s|
 
   s.swift_version = '5.0'
   s.source_files  = "Source/**/*.{h,swift}"
-  s.resources = 'Source/*.xcassets'
+  s.resource_bundles = { 'ListItemFormatter' => ['Source/*.xcassets'] }
+
+  s.test_spec 'Tests' do |test_spec|
+    test_spec.source_files = 'Tests/*.{h,swift}'
+    test_spec.resources = 'Tests/Resources/*.plist'
+  end
 end

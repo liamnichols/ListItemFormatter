@@ -72,7 +72,7 @@ class FormatProviderPatternTests: XCTestCase {
 
     func testAllPatternsInBundle() throws {
 
-        let bundle = Bundle(for: ListItemFormatter.self)
+        let bundle = Bundle.resources
 
         let localeInformation = try LocaleInformation(bundle: bundle)
         let provider = FormatProvider(bundle: bundle)

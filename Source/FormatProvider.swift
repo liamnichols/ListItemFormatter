@@ -41,7 +41,7 @@ final class FormatProvider {
         return (try? LocaleInformation(bundle: bundle)) ?? LocaleInformation()
     }()
 
-    init(bundle: Bundle = Bundle(for: FormatProvider.self)) {
+    init(bundle: Bundle = .resources) {
 
         cache = NSCache()
         cache.countLimit = 5
