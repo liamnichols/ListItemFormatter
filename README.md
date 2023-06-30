@@ -1,6 +1,8 @@
 #  ListItemFormatter
 
-[![Build Status](https://travis-ci.org/liamnichols/ListItemFormatter.svg?branch=master)](https://travis-ci.org/liamnichols/ListItemFormatter)
+[![Test Status](https://github.com/liamnichols/swift-fixture/workflows/Tests/badge.svg)](https://github.com/liamnichols/ListItemFormatter/actions/workflows/ci.yml)
+
+> **Warning**: This library is no longer maintained. It is reccomended that you use [`ListFormatter`](https://developer.apple.com/documentation/foundation/listformatter) introduced in iOS 13 instead.
 
 `ListItemFormatter` is an `NSFormatter` subclass that supports formatting list items to the [Unicode CLDR specification](https://www.unicode.org/reports/tr35/tr35-general.html#ListPatterns).
 
@@ -95,11 +97,11 @@ Follow the [instructions](https://github.com/Carthage/Carthage#quick-start) to a
 
 ### CocoaPods
 
-You want to add `pod 'ListItemFormatter', '~> 0.1'` similar to the following to your Podfile:
+You want to add `pod 'ListItemFormatter', '~> 0.2'` similar to the following to your Podfile:
 
 ```ruby
 target 'MyApp' do
-  pod 'ListItemFormatter', '~> 0.1'
+  pod 'ListItemFormatter', '~> 0.2'
 end
 ```
 
